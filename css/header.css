@@ -1,0 +1,39 @@
+/* Light header and dark navigation */
+.site-header {
+    background: #F8F6F1;
+    color: #0B1D3A;
+    border-bottom: 1px solid #E8E1D5;
+    box-shadow: 0 7px 22px rgba(11, 29, 58, 0.08);
+  }
+  
+  .desktop-nav a,
+  .mobile-nav nav a {
+    color: #26364F;
+  }
+  
+  .desktop-nav a:hover,
+  .mobile-nav nav a:hover {
+    color: #8E6C2B;
+  }
+  
+  .site-header .mobile-nav summary {
+    color: #26364F;
+  }
+  
+  /* Give the logo a defined edge on both light and dark backgrounds */
+  .brand-logo {
+    display: block;
+    width: 168px;
+    height: 112px;
+    object-fit: contain;
+    background: #F7F4ED;
+    padding: 4px;
+    border: 1px solid rgba(198, 164, 91, 0.62);
+    border-radius: 4px;
+    box-shadow: 0 5px 16px rgba(11, 29, 58, 0.12);
+  }
+  
+  .footer-brand .brand-logo {
+    width: 154px;
+    height: 103px;
+  }

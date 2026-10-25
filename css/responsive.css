@@ -1,0 +1,300 @@
+/* Tablet */
+
+@media (max-width: 900px) {
+    .container {
+      width: min(100% - 44px, 720px);
+    }
+  
+    .nav-row {
+      gap: 20px;
+    }
+  
+    .desktop-nav {
+      gap: 14px;
+    }
+  
+    .desktop-nav a {
+      font-size: 0.74rem;
+    }
+  
+    .hero-grid {
+      grid-template-columns: 1fr 0.85fr;
+      gap: 32px;
+    }
+  
+    .hero-media,
+    .hero-media img {
+      min-height: 360px;
+      height: 360px;
+    }
+  
+    .service-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  
+    .nri-grid,
+    .nagpur-grid,
+    .choose-grid,
+    .about-grid {
+      gap: 42px;
+    }
+  }
+  
+  /* Phones */
+  
+  @media (max-width: 700px) {
+    html {
+      scroll-padding-top: 16px;
+    }
+  
+    body {
+      font-size: 15px;
+    }
+  
+    .container {
+      width: calc(100% - 36px);
+    }
+  
+    .topline-inner {
+      min-height: 34px;
+      justify-content: center;
+      text-align: center;
+    }
+  
+    .topline span:last-child {
+      display: none;
+    }
+  
+    .nav-row {
+      display: grid;
+      min-height: 0;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 10px 12px;
+      padding-block: 12px;
+    }
+  
+    .brand {
+      grid-column: 1;
+      grid-row: 1 / span 2;
+      justify-self: start;
+    }
+  
+    .brand img {
+      width: 132px;
+      height: 88px;
+    }
+  
+    .desktop-nav {
+      display: none;
+    }
+  
+    .mobile-nav {
+      position: relative;
+      display: block;
+      grid-column: 2;
+      grid-row: 2;
+      justify-self: end;
+    }
+  
+    .mobile-nav summary {
+      padding: 7px 2px;
+      color: var(--navy);
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+  
+    /* ---- Rules below are new (original phone rules were cut off) ---- */
+  
+    .mobile-nav nav {
+      position: absolute;
+      z-index: 10;
+      top: 100%;
+      right: 0;
+      display: grid;
+      min-width: 200px;
+      gap: 4px;
+      padding: 12px 16px;
+      border: 1px solid #e8e1d5;
+      background: #f8f6f1;
+      box-shadow: var(--shadow);
+    }
+  
+    .mobile-nav nav a {
+      padding: 8px 0;
+      font-size: 0.86rem;
+    }
+  
+    .nav-cta {
+      grid-column: 2;
+      grid-row: 1;
+      justify-self: end;
+      min-height: 42px;
+      padding: 0 14px;
+      font-size: 0.76rem;
+    }
+  
+    h1 {
+      font-size: clamp(2.45rem, 11vw, 3.4rem);
+    }
+  
+    h2 {
+      font-size: clamp(2rem, 8vw, 2.6rem);
+    }
+  
+    .section {
+      padding-block: 64px;
+    }
+  
+    .section-heading {
+      margin-bottom: 28px;
+    }
+  
+    .hero-grid {
+      min-height: 0;
+      grid-template-columns: 1fr;
+      gap: 34px;
+      padding-block: 42px 52px;
+    }
+  
+    .hero-actions {
+      flex-direction: column;
+    }
+  
+    .hero-actions .button {
+      width: 100%;
+    }
+  
+    .hero-media,
+    .hero-media img {
+      min-height: 280px;
+      height: 280px;
+    }
+  
+    .hero-media::before {
+      inset: 12px -8px -8px 12px;
+    }
+  
+    .intro-grid {
+      grid-template-columns: 1fr;
+      gap: 18px;
+    }
+  
+    .intro-grid p:not(.intro-title) {
+      padding-left: 16px;
+    }
+  
+    .challenge-grid {
+      grid-template-columns: 1fr;
+    }
+  
+    .challenge-item {
+      padding: 22px 0 8px;
+    }
+  
+    .challenge-item + .challenge-item {
+      padding-left: 0;
+      border-top: 1px solid #cfd6e0;
+      border-left: 0;
+    }
+  
+    .service-grid {
+      grid-template-columns: 1fr;
+    }
+  
+    .service-card {
+      min-height: 0;
+    }
+  
+    .nri-grid,
+    .nagpur-grid,
+    .choose-grid,
+    .about-grid {
+      grid-template-columns: 1fr;
+      gap: 34px;
+    }
+  
+    .nri-list {
+      grid-template-columns: 1fr;
+    }
+  
+    .nri-aside {
+      padding: 26px;
+    }
+  
+    .empty-listings {
+      grid-template-columns: 1fr;
+      align-items: start;
+      gap: 16px;
+      padding: 24px;
+    }
+  
+    .nagpur-points {
+      grid-template-columns: 1fr;
+    }
+  
+    .steps-grid {
+      grid-template-columns: 1fr;
+    }
+  
+    .choose-list {
+      grid-template-columns: 1fr;
+    }
+  
+    .choose-list article {
+      min-height: 0;
+    }
+  
+    .testimonial-placeholder {
+      grid-template-columns: 1fr;
+      padding: 24px;
+    }
+  
+    .quote-mark {
+      grid-row: auto;
+    }
+  
+    .testimonial-placeholder p {
+      font-size: 1.15rem;
+    }
+  
+    .resource-grid {
+      grid-template-columns: 1fr;
+    }
+  
+    .resource-card,
+    .faq {
+      padding: 22px;
+    }
+  
+    .enquiry-heading {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 16px;
+    }
+  
+    .enquiry-form {
+      grid-template-columns: 1fr;
+    }
+  
+    .enquiry-form button {
+      justify-self: stretch;
+    }
+  
+    .final-cta-inner {
+      min-height: 0;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 22px;
+      padding-block: 44px;
+    }
+  
+    .footer-grid {
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+  
+    .footer-bottom {
+      flex-direction: column;
+      gap: 6px;
+    }
+  }
