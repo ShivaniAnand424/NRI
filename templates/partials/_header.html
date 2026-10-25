@@ -1,13 +1,13 @@
 <div class="topline">
     <div class="container topline-inner">
-      <span>Nagpur, Maharashtra</span>
-      <span>Property-related assistance, with a local point of contact</span>
+      <span>Local property-related assistance · Nagpur</span>
+      <span>For owners, buyers, sellers &amp; customers</span>
     </div>
   </div>
   
   <header class="site-header">
     <div class="container nav-row">
-      <a class="brand" href="#top" aria-label="NRIPMC home">
+      <a class="brand" href="{{ url_for('index') }}" aria-label="NRIPMC home">
         <img
           class="brand-logo"
           src="{{ url_for('static', filename='images/nripmc-logo.jpg') }}"
@@ -15,29 +15,30 @@
         >
       </a>
   
-      <nav class="desktop-nav" aria-label="Main navigation">
-        <a href="#services">Services</a>
-        <a href="#nri-support">For NRI owners</a>
-        <a href="#property-preview">Properties</a>
-        <a href="#about">About</a>
-        <a href="#resources">Resources</a>
-      </nav>
-  
-      <details class="mobile-nav">
-        <summary>Menu</summary>
-        <nav aria-label="Mobile navigation">
-          <a href="#services">Services</a>
-          <a href="#nri-support">For NRI owners</a>
-          <a href="#property-preview">Properties</a>
-          <a href="#about">About</a>
-          <a href="#resources">Resources</a>
-          <a href="#enquiry">Submit an enquiry</a>
+      <div class="nav-right">
+        <nav class="desktop-nav" aria-label="Main navigation">
+          <a href="{{ url_for('index') }}#services">Services</a>
+          <a href="{{ url_for('index') }}#nri-support">For NRIs</a>
+          <a href="{{ url_for('index') }}#nagpur">Nagpur</a>
+          <a href="{{ url_for('index') }}#about">About</a>
+          <a href="{{ url_for('index') }}#resources">Resources</a>
         </nav>
-      </details>
   
-      <a class="button button-gold nav-cta" href="#enquiry">
-        Submit an enquiry
-        <span aria-hidden="true">↗</span>
-      </a>
+        <details class="mobile-nav">
+          <summary>Menu</summary>
+          <nav aria-label="Mobile navigation">
+            <a href="{{ url_for('index') }}#services">Services</a>
+            <a href="{{ url_for('index') }}#nri-support">For NRIs</a>
+            <a href="{{ url_for('index') }}#nagpur">Nagpur</a>
+            <a href="{{ url_for('index') }}#about">About</a>
+            <a href="{{ url_for('index') }}#resources">Resources</a>
+            <a href="{{ url_for('index') }}#enquiry">Make an Enquiry</a>
+          </nav>
+        </details>
+  
+        <a class="button button-outline-dark nav-cta" href="{{ url_for('index') }}#enquiry">
+          Make an Enquiry
+        </a>
+      </div>
     </div>
   </header>
