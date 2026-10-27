@@ -100,7 +100,7 @@ def login():
             flash("You are now logged in.", "success")
             return redirect(url_for("account"))
 
-    return render_template("partials/_accounts.html", form=form)
+    return render_template("partials/_login.html", form=form)
 
 
 @app.route("/register", methods=["GET", "POST"])
@@ -166,7 +166,7 @@ def account():
         session.clear()
         flash("Your account could not be found. Please log in again.", "error")
         return redirect(url_for("login"))
-    return render_template("partials/_login.html", user=user)
+    return render_template("partials/_accounts.html", user=user)
 
 
 @app.route("/logout", methods=["POST"])
