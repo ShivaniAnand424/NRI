@@ -13,7 +13,7 @@
    
       <form
         class="enquiry-form"
-        action="#"
+        action="{{ url_for('submit_enquiry') }}"
         method="post"
       >
         <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
