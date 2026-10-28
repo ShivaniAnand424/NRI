@@ -109,6 +109,7 @@
   line-height: 1.2;
   text-transform: uppercase;
 }
+
 /* Gold caption hanging below the bottom-right corner */
 .hero-media figcaption {
   position: absolute;
@@ -160,22 +161,42 @@
   background: var(--mist);
 }
 
-.challenge-grid {
+.challenges-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 0.95fr 1.05fr;
+  align-items: start;
+  gap: 96px;
+}
+
+.challenges-copy > p:last-child {
+  max-width: 480px;
+}
+
+.challenge-list {
+  margin: 0;
+  padding: 0;
   border-top: 1px solid #cfd6e0;
+  list-style: none;
 }
 
-.challenge-item {
+.challenge-list li {
   display: grid;
-  grid-template-columns: 42px 1fr;
-  gap: 14px;
-  padding: 25px 24px 8px 0;
+  min-height: 105px;
+  grid-template-columns: 90px 1fr;
+  align-items: start;
+  padding-top: 28px;
+  border-bottom: 1px solid #cfd6e0;
 }
 
-.challenge-item + .challenge-item {
-  padding-left: 24px;
-  border-left: 1px solid #cfd6e0;
+.challenge-list .number {
+  padding-top: 4px;
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.challenge-list p {
+  font-size: 1.02rem;
+  line-height: 1.5;
 }
 
 .number,
@@ -192,6 +213,10 @@
   background: var(--white);
 }
 
+.services .section-heading {
+  max-width: 780px;
+}
+
 .service-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -200,8 +225,8 @@
 }
 
 .service-card {
-  min-height: 236px;
-  padding: 25px 22px;
+  min-height: 280px;
+  padding: 42px 28px 34px;
   border-right: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
   transition:
@@ -216,26 +241,29 @@
 
 .service-number {
   display: block;
-  margin-bottom: 22px;
+  margin-bottom: 34px;
+  font-size: 1.6rem;
+  line-height: 1;
 }
 
 .service-card h3 {
-  font-family: "Playfair Display", Georgia, serif;
-  font-size: 1.22rem;
-  font-weight: 500;
+  margin-bottom: 12px;
+  font-size: 1.3rem;
+  font-weight: 600;
 }
 
 .service-card p {
-  font-size: 0.84rem;
+  font-size: 0.9rem;
+  line-height: 1.65;
 }
 
 .service-card a {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  margin-top: 20px;
+  margin-top: 22px;
   color: var(--navy-light);
-  font-size: 0.76rem;
+  font-size: 0.8rem;
   font-weight: 700;
 }
 
