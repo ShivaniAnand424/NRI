@@ -2,10 +2,10 @@ import os
 import secrets
 import sqlite3
 from pathlib import Path
+from urllib.parse import urlsplit
 
 from flask import (
     Flask,
-    abort,
     flash,
     g,
     redirect,
@@ -15,6 +15,9 @@ from flask import (
     url_for,
 )
 from werkzeug.security import check_password_hash, generate_password_hash
+
+from csrf import csrf_token, validate_csrf
+from service_routes import service_pages
 
 app = Flask(__name__)
 app.secret_key = os.environ.get("SECRET_KEY") or secrets.token_hex(32)
@@ -38,6 +41,17 @@ def get_db():
             )
             """
         )
+        g.db.execute(
+            """
+            CREATE TABLE IF NOT EXISTS service_enquiries (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                user_id INTEGER NOT NULL,
+                service_slug TEXT NOT NULL,
+                responses_json TEXT NOT NULL,
+                created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+            )
+            """
+        )
         g.db.commit()
     return g.db
 
@@ -49,21 +63,6 @@ def close_db(_error=None):
         db.close()
 
 
-def csrf_token():
-    token = session.get("_csrf_token")
-    if token is None:
-        token = secrets.token_urlsafe(32)
-        session["_csrf_token"] = token
-    return token
-
-
-def validate_csrf():
-    expected = session.get("_csrf_token", "")
-    supplied = request.form.get("csrf_token", "")
-    if not expected or not secrets.compare_digest(expected, supplied):
-        abort(400, description="The form token is missing or invalid. Reload the page and try again.")
-
-
 @app.context_processor
 def inject_template_context():
     user_id = session.get("user_id")
@@ -73,6 +72,21 @@ def inject_template_context():
             "SELECT id, full_name, email FROM users WHERE id = ?", (user_id,)
         ).fetchone()
     return {"csrf_token": csrf_token, "current_user": current_user}
+
+
+def safe_next_url(target):
+    if not target or "\\" in target:
+        return None
+
+    parsed = urlsplit(target)
+    if (
+        parsed.scheme
+        or parsed.netloc
+        or not parsed.path.startswith("/")
+        or parsed.path.startswith("//")
+    ):
+        return None
+    return target
 
 
 @app.route("/")
@@ -98,7 +112,7 @@ def login():
             session.clear()
             session["user_id"] = user["id"]
             flash("You are now logged in.", "success")
-            return redirect(url_for("account"))
+            return redirect(safe_next_url(request.form.get("next", "")) or url_for("account"))
 
     return render_template("partials/_login.html", form=form)
 
@@ -146,7 +160,7 @@ def register():
                 session.clear()
                 session["user_id"] = cursor.lastrowid
                 flash("Your account has been created.", "success")
-                return redirect(url_for("account"))
+                return redirect(safe_next_url(request.form.get("next", "")) or url_for("account"))
 
     return render_template("partials/_register.html", form=form)
 
@@ -188,6 +202,9 @@ def submit_enquiry():
     else:
         flash("Thank you. Your enquiry has been received.", "success")
     return redirect(url_for("index", _anchor="enquiry"))
+
+
+app.register_blueprint(service_pages)
 
 
 if __name__ == "__main__":

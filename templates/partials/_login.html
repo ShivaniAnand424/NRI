@@ -1,4 +1,5 @@
 {% set page_title = 'Log in | NRIPMC' %}
+{% set requested_page = request.values.get('next', '') %}
 <!doctype html>
 <html lang="en">
 <head>
@@ -16,31 +17,47 @@
         <div class="auth-card">
           <p class="eyebrow">Client account</p>
           <h1>Log in</h1>
-          <p class="auth-intro">Welcome back. Enter your details to continue.</p>
+          <p class="auth-intro">
+            Welcome back. Sign in to continue to the service you selected.
+          </p>
 
           {% include 'partials/_flash.html' %}
 
           <form class="auth-form" action="{{ url_for('login') }}" method="post">
             <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            <input type="hidden" name="next" value="{{ requested_page }}">
 
             <div class="form-field">
               <label for="email">Email</label>
-              <input id="email" name="email" type="email"
-                     autocomplete="email" required
-                     value="{{ form.get('email', '') }}">
+              <input
+                id="email"
+                name="email"
+                type="email"
+                autocomplete="email"
+                required
+                value="{{ form.get('email', '') }}"
+              >
             </div>
 
             <div class="form-field">
               <label for="password">Password</label>
-              <input id="password" name="password" type="password"
-                     autocomplete="current-password" required>
+              <input
+                id="password"
+                name="password"
+                type="password"
+                autocomplete="current-password"
+                required
+              >
             </div>
 
             <button class="button button-gold" type="submit">Log in</button>
           </form>
 
           <p class="auth-switch">
-            New to NRIPMC? <a href="{{ url_for('register') }}">Create an account</a>
+            New to NRIPMC?
+            <a href="{{ url_for('register', next=requested_page) }}">
+              Create an account
+            </a>
           </p>
         </div>
       </div>

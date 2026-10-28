@@ -1,0 +1,97 @@
+{% set page_title = service["title"] ~ " | NRIPMC" %}
+<!doctype html>
+<html lang="en">
+<head>
+  {% include 'partials/_head.html' %}
+</head>
+
+<body id="top">
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  {% include 'partials/_header.html' %}
+
+  <main id="main-content">
+    <section class="section auth" aria-labelledby="service-title">
+      <div class="container auth-wrap">
+        <div class="auth-card auth-card-wide">
+          <p class="eyebrow">Service {{ service["number"] }}</p>
+          <h1 id="service-title">{{ service["title"] }}</h1>
+          <p class="auth-intro">{{ service["intro"] }}</p>
+
+          {% include 'partials/_flash.html' %}
+
+          <form
+            class="auth-form"
+            action="{{ url_for('service_pages.service_detail', slug=service_slug) }}"
+            method="post"
+          >
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+            {% for field in common_fields + service["fields"] %}
+              <div class="form-field">
+                <label for="{{ field['name'] }}{% if field['type'] == 'checkboxes' %}-1{% endif %}">
+                  {{ field["label"] }}{% if field["required"] %} <span aria-hidden="true">*</span>{% endif %}
+                </label>
+
+                {% if field["type"] == "select" %}
+                  <select
+                    id="{{ field['name'] }}"
+                    name="{{ field['name'] }}"
+                    {% if field["required"] %}required{% endif %}
+                  >
+                    <option value="">Choose an option</option>
+                    {% for option in field["options"] %}
+                      <option
+                        value="{{ option }}"
+                        {% if form_data.get(field["name"]) == option %}selected{% endif %}
+                      >{{ option }}</option>
+                    {% endfor %}
+                  </select>
+                {% elif field["type"] == "checkboxes" %}
+                  <div class="service-checkboxes">
+                    {% for option in field["options"] %}
+                      <label>
+                        <input
+                          type="checkbox"
+                          id="{{ field['name'] }}-{{ loop.index }}"
+                          name="{{ field['name'] }}"
+                          value="{{ option }}"
+                          {% if option in form_data.getlist(field["name"]) %}checked{% endif %}
+                        >
+                        {{ option }}
+                      </label>
+                    {% endfor %}
+                  </div>
+                {% elif field["type"] == "textarea" %}
+                  <textarea
+                    id="{{ field['name'] }}"
+                    name="{{ field['name'] }}"
+                    rows="4"
+                    {% if field["required"] %}required{% endif %}
+                  >{{ form_data.get(field["name"], "") }}</textarea>
+                {% else %}
+                  <input
+                    id="{{ field['name'] }}"
+                    name="{{ field['name'] }}"
+                    type="{{ field['type'] }}"
+                    value="{{ form_data.get(field['name'], '') }}"
+                    {% if field["required"] %}required{% endif %}
+                  >
+                {% endif %}
+
+                {% if field.get("help_text") %}
+                  <small>{{ field["help_text"] }}</small>
+                {% endif %}
+              </div>
+            {% endfor %}
+
+            <button class="button button-gold" type="submit">Send service enquiry</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  {% include 'partials/_footer.html' %}
+</body>
+</html>
