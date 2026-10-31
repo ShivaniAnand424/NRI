@@ -1,0 +1,37 @@
+<footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="#top" aria-label="NRIPMC home">
+          <img
+            class="brand-logo"
+            src="{{ url_for('static', filename='images/nripmc-logo.jpg') }}"
+            alt="NRI Property Management Company logo"
+          >
+        </a>
+        <p>
+          A local starting point for property-related enquiries in Nagpur.
+          Service scope and availability should be confirmed directly.
+        </p>
+      </div>
+  
+      <div>
+        <h3 class="footer-title">Explore</h3>
+        <a href="{{ url_for('index') }}#services">Services</a>
+        <a href="{{ url_for('index') }}#nri-support">NRI owners</a>
+        <a href="{{ url_for('index') }}#property-preview">Property preview</a>
+      </div>
+  
+      <div>
+        <h3 class="footer-title">More</h3>
+        <a href="{{ url_for('index') }}#nagpur">Why Nagpur</a>
+        <a href="{{ url_for('index') }}#how-it-works">How it works</a>
+        <a href="{{ url_for('index') }}#faqs">FAQs</a>
+        <a href="{{ url_for('index') }}#enquiry">Submit an enquiry</a>
+      </div>
+    </div>
+  
+    <div class="container footer-bottom">
+      <span>© NRIPMC — NRI Property Management Company, Nagpur</span>
+      <span>Property details and service scope should be confirmed directly.</span>
+    </div>
+  </footer>

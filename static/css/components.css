@@ -1,0 +1,91 @@
+/* Buttons */
+
+.button {
+    display: inline-flex;
+    min-height: 50px;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 0 20px;
+    border: 1px solid transparent;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 0.82rem;
+    font-weight: 700;
+    line-height: 1.2;
+    text-align: center;
+    transition:
+      background-color 180ms ease,
+      color 180ms ease,
+      border-color 180ms ease,
+      transform 180ms ease;
+  }
+  
+  .button:hover {
+    transform: translateY(-2px);
+  }
+  
+  .button-gold {
+    background: var(--gold);
+    color: var(--navy);
+  }
+  
+  .button-gold:hover {
+    background: #d8b96f;
+  }
+  
+  .button-outline {
+    border-color: rgba(255, 255, 255, 0.58);
+    background: transparent;
+    color: var(--white);
+  }
+  
+  .button-outline:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+  
+  .button-outline-dark {
+    border-color: var(--navy);
+    background: transparent;
+    color: var(--navy);
+  }
+  
+  .button-outline-dark:hover {
+    background: var(--navy);
+    color: var(--white);
+  }
+  
+  /* Shared section styles */
+  
+  .section {
+    padding-block: 92px;
+  }
+  
+  .section-heading {
+    max-width: 720px;
+    margin-bottom: 38px;
+  }
+  
+  .section-heading > p:last-child {
+    max-width: 650px;
+  }
+  
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 18px;
+    color: var(--navy-light);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    line-height: 1.4;
+    text-transform: uppercase;
+  }
+  
+  .eyebrow::before {
+    width: 28px;
+    height: 1px;
+    background: var(--gold);
+    content: "";
+  }

@@ -1,0 +1,68 @@
+<section
+  class="section property-preview"
+  id="property-preview"
+  aria-labelledby="property-title"
+>
+  <div class="container">
+    <div class="section-heading">
+      <p class="eyebrow">Handpicked</p>
+      <h2 id="property-title">Featured properties</h2>
+      <p>
+        A selection of properties and projects in and around Nagpur. Prices
+        and availability are confirmed directly with our team.
+      </p>
+    </div>
+
+    <div class="gallery-grid">
+
+      <figure class="gallery-item">
+        <img src="{{ url_for('static', filename='images/properties/property-1.jpg') }}"
+             alt="Property 1 in Nagpur" loading="lazy">
+        <a class="button button-outline-dark"
+           href="https://wa.me/{{ site.whatsapp_number }}?text={{ 'Hello NRIPMC, I would like details about the property 1.'|urlencode }}"
+           target="_blank" rel="noopener">WhatsApp for details</a>
+      </figure>
+
+      <figure class="gallery-item">
+        <img src="{{ url_for('static', filename='images/properties/property-2.jpg') }}"
+             alt="Property 2 in Nagpur" loading="lazy">
+        <a class="button button-outline-dark"
+           href="https://wa.me/{{ site.whatsapp_number }}?text={{ 'Hello NRIPMC, I would like details about the property 2.'|urlencode }}"
+           target="_blank" rel="noopener">WhatsApp for details</a>
+      </figure>
+
+      <figure class="gallery-item">
+        <img src="{{ url_for('static', filename='images/properties/property-3.jpg') }}"
+             alt="Property 3 in Nagpur" loading="lazy">
+        <a class="button button-outline-dark"
+           href="https://wa.me/{{ site.whatsapp_number }}?text={{ 'Hello NRIPMC, I would like details about the property 3.'|urlencode }}"
+           target="_blank" rel="noopener">WhatsApp for details</a>
+      </figure>
+
+      <figure class="gallery-item">
+        <img src="{{ url_for('static', filename='images/properties/property-4.jpg') }}"
+             alt="Property 4 in Nagpur" loading="lazy">
+        <a class="button button-outline-dark"
+           href="https://wa.me/{{ site.whatsapp_number }}?text={{ 'Hello NRIPMC, I would like details about the property 4.'|urlencode }}"
+           target="_blank" rel="noopener">WhatsApp for details</a>
+      </figure>
+
+      <figure class="gallery-item">
+        <img src="{{ url_for('static', filename='images/properties/property-5.jpg') }}"
+             alt="Property 5 in Nagpur" loading="lazy">
+        <a class="button button-outline-dark"
+           href="https://wa.me/{{ site.whatsapp_number }}?text={{ 'Hello NRIPMC, I would like details about the property 5.'|urlencode }}"
+           target="_blank" rel="noopener">WhatsApp for details</a>
+      </figure>
+
+      <figure class="gallery-item">
+        <img src="{{ url_for('static', filename='images/properties/property-6.jpg') }}"
+             alt="Property 6 in Nagpur" loading="lazy">
+        <a class="button button-outline-dark"
+           href="https://wa.me/{{ site.whatsapp_number }}?text={{ 'Hello NRIPMC, I would like details about the property 6.'|urlencode }}"
+           target="_blank" rel="noopener">WhatsApp for details</a>
+      </figure>
+
+    </div>
+  </div>
+</section>

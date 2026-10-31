@@ -1,0 +1,81 @@
+/* Top information strip */
+
+.topline {
+    background: #08172e;
+    color: #e6ebf3;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  
+  .topline-inner {
+    display: flex;
+    min-height: 44px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+  }
+  
+  /* Header and navigation */
+  
+  .site-header {
+    position: relative;
+    z-index: 5;
+    background: var(--white);
+    color: var(--navy);
+  }
+  
+  .nav-row {
+    display: flex;
+    min-height: 116px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 28px;
+  }
+  
+  .brand {
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: center;
+  }
+  
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: clamp(24px, 3.2vw, 46px);
+  }
+  
+  .desktop-nav {
+    display: flex;
+    align-items: center;
+    gap: clamp(18px, 2.6vw, 34px);
+  }
+  
+  .desktop-nav a,
+  .mobile-nav nav a {
+    color: #3b4658;
+    font-size: 0.92rem;
+    transition: color 180ms ease;
+  }
+  
+  .desktop-nav a:hover,
+  .mobile-nav nav a:hover {
+    color: #8e6c2b;
+  }
+  
+  .mobile-nav {
+    display: none;
+  }
+  
+  .mobile-nav summary {
+    cursor: pointer;
+    list-style: none;
+  }
+  
+  .mobile-nav summary::-webkit-details-marker {
+    display: none;
+  }
+  
+  .nav-cta {
+    flex: 0 0 auto;
+  }

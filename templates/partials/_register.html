@@ -1,0 +1,122 @@
+{% set page_title = 'Create an account | NRIPMC' %}
+{% set requested_page = request.values.get('next', '') %}
+<!doctype html>
+<html lang="en">
+<head>
+  {% include 'partials/_head.html' %}
+</head>
+
+<body id="top">
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  {% include 'partials/_header.html' %}
+
+  <main id="main-content">
+    <section class="section auth">
+      <div class="container auth-wrap">
+        <div class="auth-card auth-card-wide">
+          <p class="eyebrow">Client account</p>
+          <h1>Create your account</h1>
+          <p class="auth-intro">
+            Register to continue to the selected NRIPMC service and make future
+            enquiries about your Nagpur property easier.
+          </p>
+
+          {% include 'partials/_flash.html' %}
+
+          <form class="auth-form" action="{{ url_for('register') }}" method="post">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            <input type="hidden" name="next" value="{{ requested_page }}">
+
+            <div class="form-field">
+              <label for="full-name">Full name</label>
+              <input
+                id="full-name"
+                name="full_name"
+                type="text"
+                autocomplete="name"
+                required
+                value="{{ form.get('full_name', '') }}"
+              >
+            </div>
+
+            <div class="auth-row">
+              <div class="form-field">
+                <label for="email">Email</label>
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  autocomplete="email"
+                  required
+                  value="{{ form.get('email', '') }}"
+                >
+              </div>
+
+              <div class="form-field">
+                <label for="phone">Phone (with country code)</label>
+                <input
+                  id="phone"
+                  name="phone"
+                  type="tel"
+                  autocomplete="tel"
+                  placeholder="+1 555 000 0000"
+                  value="{{ form.get('phone', '') }}"
+                >
+              </div>
+            </div>
+
+            <div class="form-field">
+              <label for="country">Country of residence</label>
+              <input
+                id="country"
+                name="country"
+                type="text"
+                autocomplete="country-name"
+                value="{{ form.get('country', '') }}"
+              >
+            </div>
+
+            <div class="auth-row">
+              <div class="form-field">
+                <label for="password">Password</label>
+                <input
+                  id="password"
+                  name="password"
+                  type="password"
+                  autocomplete="new-password"
+                  minlength="8"
+                  required
+                >
+              </div>
+
+              <div class="form-field">
+                <label for="confirm-password">Confirm password</label>
+                <input
+                  id="confirm-password"
+                  name="confirm_password"
+                  type="password"
+                  autocomplete="new-password"
+                  minlength="8"
+                  required
+                >
+              </div>
+            </div>
+
+            <button class="button button-gold" type="submit">
+              Create account
+            </button>
+          </form>
+
+          <p class="auth-switch">
+            Already registered?
+            <a href="{{ url_for('login', next=requested_page) }}">Log in</a>
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  {% include 'partials/_footer.html' %}
+</body>
+</html>

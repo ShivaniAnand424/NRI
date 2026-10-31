@@ -1,0 +1,41 @@
+{% set page_title = 'My account | NRIPMC' %}
+<!doctype html>
+<html lang="en">
+<head>
+  {% include 'partials/_head.html' %}
+</head>
+
+<body id="top">
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  {% include 'partials/_header.html' %}
+
+  <main id="main-content">
+    <section class="section auth">
+      <div class="container auth-wrap">
+        <div class="auth-card">
+          <p class="eyebrow">Client account</p>
+          <h1>Welcome, {{ user['full_name'] }}</h1>
+          <p class="auth-intro">These are the details we have saved for you.</p>
+
+          {% include 'partials/_flash.html' %}
+
+          <dl class="account-details">
+            <div><dt>Name</dt><dd>{{ user['full_name'] }}</dd></div>
+            <div><dt>Email</dt><dd>{{ user['email'] }}</dd></div>
+            <div><dt>Phone</dt><dd>{{ user['phone'] or '—' }}</dd></div>
+            <div><dt>Country</dt><dd>{{ user['country'] or '—' }}</dd></div>
+          </dl>
+
+          <form action="{{ url_for('logout') }}" method="post">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            <button class="button button-outline-dark" type="submit">Log out</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  {% include 'partials/_footer.html' %}
+</body>
+</html>
