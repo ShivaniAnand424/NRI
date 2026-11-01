@@ -1,11 +1,8 @@
 import json
-import sqlite3
-from contextlib import closing
 
 from flask import (
     Blueprint,
     abort,
-    current_app,
     flash,
     redirect,
     render_template,
@@ -13,8 +10,10 @@ from flask import (
     session,
     url_for,
 )
+from sqlalchemy import text
 
 from csrf import validate_csrf
+from database import get_db
 from service_catalog import COMMON_FIELDS, get_service_page
 
 
@@ -63,18 +62,19 @@ def service_detail(slug):
                 form_data=request.form,
             ), 400
 
-        with closing(sqlite3.connect(current_app.config["DATABASE"])) as db, db:
-            db.execute(
-                """
+        db = get_db()
+        db.execute(
+            text("""
                 INSERT INTO service_enquiries (user_id, service_slug, responses_json)
-                VALUES (?, ?, ?)
-                """,
-                (
-                    session["user_id"],
-                    slug,
-                    json.dumps(responses),
-                ),
-            )
+                VALUES (:user_id, :service_slug, :responses_json)
+            """),
+            {
+                "user_id": session["user_id"],
+                "service_slug": slug,
+                "responses_json": json.dumps(responses),
+            },
+        )
+        db.commit()
 
         flash("Your service enquiry has been submitted.", "success")
         return redirect(url_for("service_pages.service_detail", slug=slug))
