@@ -14,10 +14,23 @@ load_dotenv(PROJECT_DIR / ".env")
 
 
 def _ca_path():
-    ca = Path(os.environ.get("DB_SSL_CA", "ca.pem"))
-    if not ca.is_absolute():
-        ca = PROJECT_DIR / ca
-    return str(ca)
+    configured = os.environ.get("DB_SSL_CA")
+    candidates = []
+
+    if configured:
+        ca = Path(configured)
+        candidates.append(ca if ca.is_absolute() else PROJECT_DIR / ca)
+
+    candidates.extend((PROJECT_DIR / "certs" / "ca.pem", Path("/etc/secrets/ca.pem")))
+
+    for ca in candidates:
+        if ca.is_file():
+            return str(ca)
+
+    raise FileNotFoundError(
+        "MySQL CA certificate not found. Set DB_SSL_CA to the certificate path; "
+        "on Render, add it as a Secret File and use /etc/secrets/ca.pem."
+    )
 
 
 def connect():
