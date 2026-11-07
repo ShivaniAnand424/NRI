@@ -47,6 +47,27 @@
     grid-template-columns: repeat(2, 1fr);
   }
 
+  .property-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .advantage-grid,
+  .group-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .pricing-grid {
+    gap: 42px;
+  }
+
+  .challenges-grid {
+    gap: 48px;
+  }
+
   .nri-grid,
   .nagpur-grid,
   .choose-grid,
@@ -198,22 +219,49 @@
     padding-left: 16px;
   }
 
-  .challenge-grid {
+  .challenges-grid {
     grid-template-columns: 1fr;
+    gap: 34px;
   }
 
-  .challenge-item {
-    padding: 22px 0 8px;
-  }
-
-  .challenge-item + .challenge-item {
-    padding-left: 0;
-    border-top: 1px solid #cfd6e0;
-    border-left: 0;
+  .challenge-list li {
+    min-height: 0;
+    grid-template-columns: 56px 1fr;
+    padding: 22px 0 26px;
   }
 
   .service-grid {
     grid-template-columns: 1fr;
+  }
+
+  .property-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .page-hero {
+    padding-block: 56px 52px;
+  }
+
+  .advantage-grid,
+  .group-grid,
+  .pricing-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pricing-grid {
+    gap: 34px;
+  }
+
+  .price-card {
+    padding: 28px;
+  }
+
+  .group-card {
+    padding: 26px 22px;
   }
 
   .service-card {
@@ -293,6 +341,18 @@
 
   .enquiry-form button {
     justify-self: stretch;
+  }
+
+  .site-visit {
+    padding-block: 52px;
+  }
+
+  .site-visit-actions {
+    flex-direction: column;
+  }
+
+  .site-visit-actions .button {
+    width: 100%;
   }
 
   .final-cta-inner {

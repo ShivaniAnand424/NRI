@@ -1,0 +1,148 @@
+/* Login, registration and account pages */
+
+/* Header login link */
+.nav-login {
+  color: #3b4658;
+  font-size: 0.92rem;
+  transition: color 180ms ease;
+}
+
+.nav-login:hover {
+  color: #8e6c2b;
+}
+
+/* Page + card */
+.auth {
+  background: var(--cream);
+}
+
+.auth-wrap {
+  display: flex;
+  justify-content: center;
+}
+
+.auth-card {
+  width: min(100%, 520px);
+  padding: 44px 40px;
+  border: 1px solid var(--line);
+  background: var(--white);
+  box-shadow: var(--shadow);
+}
+
+.auth-card-wide {
+  width: min(100%, 680px);
+}
+
+.auth-card h1 {
+  margin-bottom: 12px;
+  font-size: clamp(2rem, 3.4vw, 2.6rem);
+}
+
+.auth-intro {
+  margin-bottom: 26px;
+  font-size: 0.95rem;
+}
+
+/* Form */
+.auth-form {
+  display: grid;
+  gap: 20px;
+}
+
+.auth-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.auth-form .button {
+  width: 100%;
+}
+
+.auth-switch {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.auth-switch a {
+  color: var(--navy);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Messages */
+.flash-list {
+  display: grid;
+  gap: 10px;
+  margin: 0 0 22px;
+  padding: 0;
+  list-style: none;
+}
+
+.flash {
+  padding: 12px 14px;
+  border-left: 3px solid;
+  font-size: 0.88rem;
+}
+
+.flash-error {
+  border-color: #b42318;
+  background: #fef3f2;
+  color: #912018;
+}
+
+.flash-success {
+  border-color: #067647;
+  background: #ecfdf3;
+  color: #05603a;
+}
+
+/* Account page */
+.account-details {
+  margin: 0 0 28px;
+  border-top: 1px solid var(--line);
+}
+
+.account-details div {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 12px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.account-details dt {
+  color: #485264;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.account-details dd {
+  margin: 0;
+  color: var(--ink);
+}
+
+@media (max-width: 700px) {
+  .nav-row > .nav-right > .nav-login {
+    display: none;
+  }
+
+  .auth-card {
+    padding: 30px 22px;
+  }
+
+  .auth-row {
+    grid-template-columns: 1fr;
+  }
+
+  .account-details div {
+    grid-template-columns: 1fr;
+    gap: 2px;
+  }
+}
