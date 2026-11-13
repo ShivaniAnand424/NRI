@@ -14,6 +14,7 @@ from sqlalchemy import text
 
 from csrf import validate_csrf
 from database import get_db
+from notify import send_alert
 from service_catalog import COMMON_FIELDS, get_service_page
 
 
@@ -75,6 +76,28 @@ def service_detail(slug):
             },
         )
         db.commit()
+
+        # Email the team: who the customer is + every answer they gave.
+        user = db.execute(
+            text("SELECT full_name, email, phone, country FROM users WHERE id = :user_id"),
+            {"user_id": session["user_id"]},
+        ).mappings().first()
+        answers = []
+        for field in fields:
+            value = responses.get(field["name"])
+            if isinstance(value, list):
+                value = ", ".join(value)
+            answers.append(f"- {field['label']}: {value or '-'}")
+        customer = user or {}
+        send_alert(
+            f"New service enquiry: {service['title']} ({customer.get('full_name', 'customer')})",
+            f"Service: {service['title']}\n\n"
+            f"Customer: {customer.get('full_name', '-')}\n"
+            f"Email: {customer.get('email', '-')}\n"
+            f"Phone: {customer.get('phone') or '-'}\n"
+            f"Country: {customer.get('country') or '-'}\n\n"
+            "Answers:\n" + "\n".join(answers) + "\n",
+        )
 
         flash("Your service enquiry has been submitted.", "success")
         return redirect(url_for("service_pages.service_detail", slug=slug))

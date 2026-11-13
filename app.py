@@ -1,7 +1,5 @@
 import os
 import secrets
-import smtplib
-from email.message import EmailMessage
 from pathlib import Path
 from urllib.parse import urlsplit
 
@@ -22,6 +20,7 @@ from werkzeug.security import check_password_hash, generate_password_hash
 
 from csrf import csrf_token, validate_csrf
 from database import get_db, init_app as init_database
+from notify import send_alert
 from service_routes import service_pages
 
 load_dotenv()
@@ -76,43 +75,6 @@ def inject_template_context():
             {"user_id": user_id},
         ).mappings().first()
     return {"csrf_token": csrf_token, "current_user": current_user, "site": SITE}
-
-
-def send_enquiry_email(details):
-    """Emails a copy of a new enquiry to the team.
-
-    Works only when these environment variables are set:
-    SMTP_HOST, SMTP_USER, SMTP_PASSWORD, ENQUIRY_EMAIL_TO
-    (SMTP_PORT is optional, default 587). Otherwise it quietly does nothing.
-    """
-    host = os.environ.get("SMTP_HOST")
-    user = os.environ.get("SMTP_USER")
-    password = os.environ.get("SMTP_PASSWORD")
-    recipient = os.environ.get("ENQUIRY_EMAIL_TO")
-    if not (host and user and password and recipient):
-        return False
-
-    message = EmailMessage()
-    message["Subject"] = f"New NRIPMC enquiry from {details['full_name']}"
-    message["From"] = user
-    message["To"] = recipient
-    message.set_content(
-        "A new enquiry was received on the website.\n\n"
-        f"Name: {details['full_name']}\n"
-        f"Contact: {details['contact']}\n"
-        f"Property location: {details['property_location'] or '-'}\n"
-        f"Service: {details['service'] or '-'}\n\n"
-        f"Message:\n{details['requirement']}\n"
-    )
-    try:
-        with smtplib.SMTP(host, int(os.environ.get("SMTP_PORT", "587")), timeout=15) as server:
-            server.starttls()
-            server.login(user, password)
-            server.send_message(message)
-        return True
-    except Exception:
-        app.logger.exception("Could not send the enquiry email")
-        return False
 
 
 def safe_next_url(target):
@@ -207,6 +169,14 @@ def register():
             else:
                 session.clear()
                 session["user_id"] = cursor.lastrowid
+                send_alert(
+                    f"New NRIPMC account: {form['full_name']}",
+                    "A new customer registered on the website.\n\n"
+                    f"Name: {form['full_name']}\n"
+                    f"Email: {form['email']}\n"
+                    f"Phone: {form['phone'] or '-'}\n"
+                    f"Country: {form['country'] or '-'}\n",
+                )
                 flash("Your account has been created.", "success")
                 return redirect(safe_next_url(request.form.get("next", "")) or url_for("account"))
 
@@ -250,13 +220,6 @@ def submit_enquiry():
     if not full_name or not contact or not requirement:
         flash("Please complete all enquiry fields.", "error")
     else:
-        details = {
-            "full_name": full_name,
-            "contact": contact,
-            "property_location": property_location,
-            "service": service,
-            "requirement": requirement,
-        }
         db = get_db()
         db.execute(
             text("""
@@ -274,7 +237,15 @@ def submit_enquiry():
             },
         )
         db.commit()
-        send_enquiry_email(details)
+        send_alert(
+            f"New NRIPMC enquiry from {full_name}",
+            "A new enquiry was received on the website.\n\n"
+            f"Name: {full_name}\n"
+            f"Contact: {contact}\n"
+            f"Property location: {property_location or '-'}\n"
+            f"Service: {service or '-'}\n\n"
+            f"Message:\n{requirement}\n",
+        )
         flash("Thank you. Your enquiry has been received.", "success")
     return redirect(
         safe_next_url(request.form.get("next", ""))
