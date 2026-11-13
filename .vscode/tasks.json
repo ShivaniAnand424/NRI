@@ -1,0 +1,26 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Run Flask website",
+			"type": "shell",
+			"command": "python",
+			"args": [
+				"app.py"
+			],
+			"isBackground": true,
+			"problemMatcher": []
+		},
+		{
+			"label": "Run Flask website (local SQLite)",
+			"type": "shell",
+			"command": "python",
+			"args": [
+				"-c",
+				"import os; [os.environ.pop(k, None) for k in ('DB_HOST', 'DB_USER', 'DB_PASSWORD', 'DB_NAME', 'DB_PORT', 'DB_SSL_CA')]; os.environ['DATABASE_URL'] = 'sqlite:///instance/users.sqlite3'; import app; app.app.run(host='127.0.0.1', port=5000, debug=False)"
+			],
+			"isBackground": true,
+			"problemMatcher": []
+		}
+	]
+}
