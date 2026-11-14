@@ -14,29 +14,25 @@
     </div>
 
     <div class="gallery-grid">
-
       <figure class="gallery-item">
         <img src="{{ url_for('static', filename='images/properties/property-1.jpg') }}"
-             alt="Property 1 in Nagpur" loading="lazy">
-        <a class="button button-outline-dark"
-           href="https://wa.me/{{ site.whatsapp_number }}?text={{ 'Hello NRIPMC, I would like details about the property 1.'|urlencode }}"
-           target="_blank" rel="noopener">WhatsApp for details</a>
+             alt="Apartments property category" loading="lazy">
+        <figcaption>Apartments</figcaption>
+        <a class="button button-outline-dark" href="{{ url_for('property_layout') }}">Explore property options</a>
       </figure>
 
       <figure class="gallery-item">
         <img src="{{ url_for('static', filename='images/properties/property-2.jpg') }}"
-             alt="Property 2 in Nagpur" loading="lazy">
-        <a class="button button-outline-dark"
-           href="https://wa.me/{{ site.whatsapp_number }}?text={{ 'Hello NRIPMC, I would like details about the property 2.'|urlencode }}"
-           target="_blank" rel="noopener">WhatsApp for details</a>
+             alt="Residential plots property category" loading="lazy">
+        <figcaption>Residential Plots</figcaption>
+        <a class="button button-outline-dark" href="{{ url_for('property_layout') }}">Explore property options</a>
       </figure>
 
       <figure class="gallery-item">
         <img src="{{ url_for('static', filename='images/properties/property-3.png') }}"
-             alt="Property 3 in Nagpur" loading="lazy">
-        <a class="button button-outline-dark"
-           href="https://wa.me/{{ site.whatsapp_number }}?text={{ 'Hello NRIPMC, I would like details about the property 3.'|urlencode }}"
-           target="_blank" rel="noopener">WhatsApp for details</a>
+             alt="Farm plots property category" loading="lazy">
+        <figcaption>Farm Plots</figcaption>
+        <a class="button button-outline-dark" href="{{ url_for('property_layout') }}">Explore property options</a>
       </figure>
 
     </div>

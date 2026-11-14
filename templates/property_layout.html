@@ -1,0 +1,51 @@
+{% set page_title = 'Property Categories | NRIPMC' %}
+<!doctype html>
+<html lang="en">
+<head>
+  {% include 'partials/_head.html' %}
+</head>
+
+<body id="top">
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  {% include 'partials/_header.html' %}
+
+  <main id="main-content">
+    <section class="page-hero" aria-labelledby="property-layout-title">
+      <div class="container">
+        <p class="eyebrow">Property categories</p>
+        <h1 id="property-layout-title">Explore property options in Nagpur.</h1>
+        <p class="page-lead">
+          Browse apartments, residential plots and farm plots. Contact our team
+          for current details, locations and availability.
+        </p>
+      </div>
+    </section>
+
+    <section class="section property-preview" aria-label="Property categories">
+      <div class="container">
+        <div class="gallery-grid">
+          {% for category in categories %}
+            <figure class="gallery-item">
+              <img
+                src="{{ url_for('static', filename='images/properties/' ~ category.image) }}"
+                alt="{{ category.alt }}"
+                loading="lazy"
+              >
+              <figcaption>{{ category.name }}</figcaption>
+              <a
+                class="button button-outline-dark"
+                href="https://wa.me/{{ site.whatsapp_number }}?text={{ ('Hello NRIPMC, I would like details about ' ~ category.name)|urlencode }}"
+                target="_blank"
+                rel="noopener noreferrer"
+              >Ask about {{ category.name|lower }}</a>
+            </figure>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+  </main>
+
+  {% include 'partials/_footer.html' %}
+</body>
+</html>
