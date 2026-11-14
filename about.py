@@ -1,5 +1,5 @@
 """Content for the About page. Edit the text here; no HTML changes needed.
-Photos live in static/images/team/ (replace them with the original high-resolution photos when you have them).
+Photos live in static/images/ (replace them with the original high-resolution photos when you have them).
 """
 
 STATS = [

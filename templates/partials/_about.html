@@ -57,7 +57,7 @@
           {% for person in leaders %}
             <article class="leader-card">
               <img
-                src="{{ url_for('static', filename='images/team/' ~ person.photo) }}"
+                src="{{ url_for('static', filename='images/' ~ person.photo) }}"
                 alt="{{ person.name }}, {{ person.role }}"
                 width="280" height="390" loading="lazy">
               <div class="leader-body">
@@ -139,7 +139,7 @@
           {% for person in team %}
             <article class="team-card">
               <img
-                src="{{ url_for('static', filename='images/team/' ~ person.photo) }}"
+                src="{{ url_for('static', filename='images/' ~ person.photo) }}"
                 alt="{{ person.name }}, {{ person.role }}"
                 width="300" height="270" loading="lazy">
               <h3>{{ person.name }}</h3>
