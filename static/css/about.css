@@ -1,0 +1,37 @@
+/* About page. Uses your site's colour variables if they exist, with safe fallbacks. */
+.about-stats { background: var(--navy, #0f1b33); color: #fff; padding: 2rem 0; }
+.about-stats-grid { list-style: none; margin: 0; padding: 0; display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); text-align: center; }
+.about-stats-grid strong { display: block; font-size: 2.2rem; line-height: 1.1; color: var(--gold, #d4a933); }
+.about-stats-grid span { font-size: .95rem; opacity: .9; }
+
+.leader-grid { display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+.leader-card { display: flex; flex-wrap: wrap; border: 1px solid rgba(0,0,0,.1); border-radius: 14px; overflow: hidden; background: #fff; }
+.leader-card img { width: 100%; max-width: 220px; flex: 0 0 220px; object-fit: cover; object-position: top; background: #eee; }
+.leader-body { flex: 1 1 220px; padding: 1.25rem 1.5rem; }
+.leader-body h3 { margin: 0 0 .15rem; }
+
+.person-role { margin: 0 0 .75rem; font-weight: 700; font-size: .8rem; letter-spacing: .06em; text-transform: uppercase; color: var(--gold, #b8901f); }
+.person-link { font-weight: 600; text-decoration: none; color: var(--navy, #0f1b33); }
+.person-link:hover, .company-links a:hover { text-decoration: underline; }
+
+.company-grid { display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); margin-top: 2rem; }
+.company-card { border: 1px solid rgba(0,0,0,.1); border-radius: 14px; padding: 1.5rem; background: #fff; }
+.company-card h3 { margin-top: 0; }
+.company-card ul { padding-left: 1.2rem; }
+.company-address { font-size: .9rem; opacity: .8; }
+.company-links { display: flex; gap: 1.25rem; margin: 0; }
+.company-links a { font-weight: 600; text-decoration: none; color: var(--navy, #0f1b33); }
+
+.team-grid { display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); }
+.team-card { text-align: center; padding: 1rem; border: 1px solid rgba(0,0,0,.08); border-radius: 14px; background: #fff; }
+.team-card img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; object-position: top; border-radius: 10px; background: #f3f3f3; }
+.team-card h3 { margin: .9rem 0 .15rem; }
+.team-card p { font-size: .95rem; }
+
+.about-cta { margin: 2.5rem 0 0; text-align: center; font-size: 1.1rem; }
+.about-cta .button { margin-left: .75rem; }
+
+@media (max-width: 560px) {
+  .leader-card img { max-width: none; flex-basis: 100%; height: 280px; }
+  .about-cta .button { display: inline-block; margin: .75rem 0 0; }
+}

@@ -18,6 +18,7 @@ from sqlalchemy import text
 from sqlalchemy.exc import IntegrityError
 from werkzeug.security import check_password_hash, generate_password_hash
 
+from about import COMPANIES, LEADERS, STATS, TEAM, VALUES
 from csrf import csrf_token, validate_csrf
 from database import get_db, init_app as init_database
 from notify import send_alert
@@ -100,6 +101,18 @@ def index():
 @app.route("/our-services")
 def our_services():
     return render_template("services.html")
+
+
+@app.route("/about")
+def about():
+    return render_template(
+        "about.html",
+        stats=STATS,
+        leaders=LEADERS,
+        companies=COMPANIES,
+        values=VALUES,
+        team=TEAM,
+    )
 
 
 @app.route("/login", methods=["GET", "POST"])

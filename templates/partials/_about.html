@@ -1,19 +1,163 @@
-<section class="section about" id="about" aria-labelledby="about-title">
-    <div class="container about-grid">
-      <div class="about-label">
-        <p class="eyebrow">About NRIPMC</p>
-        <p>NRI Property Management Company<br>Nagpur, Maharashtra</p>
-      </div>
-  
-      <div>
-        <h2 id="about-title">A local point of contact for property questions.</h2>
-        <p>
-          NRIPMC is a starting point for NRI property owners and others seeking
-          property-related assistance in Nagpur. Specific services,
-          availability, and responsibilities should be discussed and confirmed
-          directly.
+{% set page_title = 'About our company | NRIPMC' %}
+<!doctype html>
+<html lang="en">
+<head>
+  {% include 'partials/_head.html' %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/about.css') }}">
+</head>
+
+<body id="top">
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  {% include 'partials/_header.html' %}
+
+  <main id="main-content">
+
+    <!-- Hero -->
+    <section class="page-hero" aria-labelledby="about-title">
+      <div class="container">
+        <p class="eyebrow">About our company</p>
+        <h1 id="about-title">Your property in India, in trusted hands.</h1>
+        <p class="page-lead">
+          Your property is the thing that ties you to your homeland. NRI Property
+          Management Company bridges the distance for Non-Resident Indians, so you
+          can stop worrying about a property you cannot visit and start trusting
+          the people who look after it.
         </p>
-        <a class="text-link" href="#enquiry">Get in touch <span aria-hidden="true">↗</span></a>
+        <div class="hero-actions">
+          <a class="button button-gold" href="{{ url_for('our_services') }}">See our services</a>
+          <a class="button button-outline" href="tel:{{ site.phone_link }}">Call {{ site.phone_display }}</a>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
+
+    <!-- Numbers -->
+    <section class="about-stats" aria-label="Our company in numbers">
+      <div class="container">
+        <ul class="about-stats-grid">
+          {% for stat in stats %}
+            <li>
+              <strong>{{ stat.value }}</strong>
+              <span>{{ stat.label }}</span>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </section>
+
+    <!-- Leadership (first) -->
+    <section class="section about-leaders" aria-labelledby="leaders-title">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">The people behind the company</p>
+          <h2 id="leaders-title">Our leadership</h2>
+        </div>
+
+        <div class="leader-grid">
+          {% for person in leaders %}
+            <article class="leader-card">
+              <img
+                src="{{ url_for('static', filename='images/team/' ~ person.photo) }}"
+                alt="{{ person.name }}, {{ person.role }}"
+                width="280" height="390" loading="lazy">
+              <div class="leader-body">
+                <h3>{{ person.name }}</h3>
+                <p class="person-role">{{ person.role }}</p>
+                <p>{{ person.bio }}</p>
+                {% if person.linkedin %}
+                  <a class="person-link" href="{{ person.linkedin }}" target="_blank" rel="noopener noreferrer"
+                     aria-label="{{ person.name }} on LinkedIn (opens in a new tab)">LinkedIn profile <span aria-hidden="true">→</span></a>
+                {% endif %}
+              </div>
+            </article>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+
+    <!-- Partnership -->
+    <section class="section about-partnership" aria-labelledby="partnership-title">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">Two companies, one promise</p>
+          <h2 id="partnership-title">Care and real estate expertise, working together.</h2>
+          <p>
+            NRIPMC looks after your asset end to end, while our strategic partner
+            Shree Hari Realtors adds local market knowledge, valuation, and buying
+            and selling capability. Together, the whole journey stays with one
+            connected team in Nagpur.
+          </p>
+        </div>
+
+        <div class="company-grid">
+          {% for company in companies %}
+            <article class="company-card">
+              <p class="eyebrow">{{ company.tag }}</p>
+              <h3>{{ company.name }}</h3>
+              <p>{{ company.text }}</p>
+              <ul>
+                {% for point in company.points %}<li>{{ point }}</li>{% endfor %}
+              </ul>
+              <p class="company-address">{{ company.address }}</p>
+              <p class="company-links">
+                <a href="{{ company.website }}" target="_blank" rel="noopener noreferrer">Website</a>
+                <a href="{{ company.linkedin }}" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+              </p>
+            </article>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+
+    <!-- Why trust us -->
+    <section class="section advantages" aria-labelledby="trust-title">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">Why trust us</p>
+          <h2 id="trust-title">What you can count on.</h2>
+        </div>
+        <div class="advantage-grid">
+          {% for value in values %}
+            <article>
+              <h3>{{ value.title }}</h3>
+              <p>{{ value.text }}</p>
+            </article>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+
+    <!-- Team (last) -->
+    <section class="section about-team" aria-labelledby="team-title">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">Meet the team</p>
+          <h2 id="team-title">The team you will speak with.</h2>
+        </div>
+
+        <div class="team-grid">
+          {% for person in team %}
+            <article class="team-card">
+              <img
+                src="{{ url_for('static', filename='images/team/' ~ person.photo) }}"
+                alt="{{ person.name }}, {{ person.role }}"
+                width="300" height="270" loading="lazy">
+              <h3>{{ person.name }}</h3>
+              <p class="person-role">{{ person.role }}</p>
+              <p>{{ person.bio }}</p>
+            </article>
+          {% endfor %}
+        </div>
+
+        <p class="about-cta">
+          Have a property in Nagpur you want looked after?
+          <a class="button button-gold" href="{{ url_for('our_services', _anchor='enquiry') }}">Tell us about it</a>
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  {% include 'partials/_footer.html' %}
+</body>
+</html>
