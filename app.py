@@ -6,11 +6,13 @@ from urllib.parse import urlsplit
 from dotenv import load_dotenv
 from flask import (
     Flask,
+    abort,
     flash,
     g,
     redirect,
     render_template,
     request,
+    send_from_directory,
     session,
     url_for,
 )
@@ -22,6 +24,7 @@ from about import COMPANIES, LEADERS, STATS, TEAM, VALUES
 from csrf import csrf_token, validate_csrf
 from database import get_db, init_app as init_database
 from notify import send_alert
+from property_data import PARTNER_LINE, PROPERTIES as PROPERTY_LISTINGS
 from service_routes import service_pages
 
 load_dotenv()
@@ -34,6 +37,7 @@ app.config["DATABASE_URL"] = os.environ.get(
     f"sqlite:///{(Path(app.instance_path) / 'users.sqlite3').as_posix()}",
 )
 init_database(app)
+PRIVATE_FILES_DIR = Path(app.root_path) / "private_files"
 
 # Contact details used by the site-visit band and the property cards.
 SITE = {
@@ -57,6 +61,21 @@ PROPERTIES = [
     #     "alt": "Exterior view of Project name in Area, Nagpur",
     # },
 ]
+
+
+PROPERTY_BY_SLUG = {item["slug"]: item for item in PROPERTY_LISTINGS}
+
+
+def _property_for_display(item):
+    property_item = dict(item)
+    image_path = Path(app.static_folder) / item["image"]
+    property_item["has_image"] = image_path.is_file()
+    return property_item
+
+
+def _private_property_file_exists(relative_path):
+    return bool(relative_path) and (PRIVATE_FILES_DIR / relative_path).is_file()
+
 
 @app.teardown_appcontext
 def close_db(_error=None):
@@ -100,6 +119,93 @@ def index():
 @app.route("/our-services")
 def our_services():
     return render_template("services.html")
+
+
+@app.route("/properties/sold")
+def sold_properties():
+    properties = [
+        _property_for_display(item)
+        for item in PROPERTY_LISTINGS
+        if item["status"] == "sold"
+    ]
+    return render_template(
+        "properties.html",
+        properties=properties,
+        property_status="sold",
+        page_title="Sold Properties | NRIPMC",
+        partner_line=PARTNER_LINE,
+    )
+
+
+@app.route("/properties/ongoing")
+def ongoing_properties():
+    properties = [
+        _property_for_display(item)
+        for item in PROPERTY_LISTINGS
+        if item["status"] in ("sale", "ongoing")
+    ]
+    return render_template(
+        "properties.html",
+        properties=properties,
+        property_status="ongoing",
+        page_title="Ongoing Properties | NRIPMC",
+        partner_line=PARTNER_LINE,
+    )
+
+
+@app.route("/properties/<slug>")
+def property_detail(slug):
+    property_item = PROPERTY_BY_SLUG.get(slug)
+    if property_item is None:
+        abort(404)
+
+    property_item = _property_for_display(property_item)
+    documents = []
+    if session.get("user_id") is not None:
+        if _private_property_file_exists(property_item.get("layout_file")):
+            documents.append(("Floor / Layout Plan", "layout"))
+        for index, (label, relative_path) in enumerate(
+            property_item.get("extra_files", [])
+        ):
+            if _private_property_file_exists(relative_path):
+                documents.append((label, f"extra-{index}"))
+
+    return render_template(
+        "property_detail.html",
+        property=property_item,
+        documents=documents,
+        partner_line=PARTNER_LINE,
+        page_title=f"{property_item['name']} | NRIPMC",
+    )
+
+
+@app.route("/properties/<slug>/file/<name>")
+def property_file(slug, name):
+    property_item = PROPERTY_BY_SLUG.get(slug)
+    if property_item is None:
+        abort(404)
+    user_id = session.get("user_id")
+    user_exists = user_id is not None and get_db().execute(
+        text("SELECT 1 FROM users WHERE id = :user_id"),
+        {"user_id": user_id},
+    ).first()
+    if not user_exists:
+        session.clear()
+        flash("Please log in to view this property document.", "error")
+        return redirect(url_for("login", next=request.path))
+
+    if name == "layout":
+        relative_path = property_item.get("layout_file")
+    elif name.startswith("extra-") and name[6:].isdigit():
+        extra_files = property_item.get("extra_files", [])
+        index = int(name[6:])
+        relative_path = extra_files[index][1] if index < len(extra_files) else None
+    else:
+        relative_path = None
+
+    if not _private_property_file_exists(relative_path):
+        abort(404)
+    return send_from_directory(PRIVATE_FILES_DIR, relative_path)
 
 
 @app.route("/about")

@@ -21,6 +21,13 @@
         <a href="{{ url_for('index') }}#nri-support">For NRIs</a>
         <a href="{{ url_for('index') }}#nagpur">Nagpur</a>
         <a href="{{ url_for('about') }}">About Us</a>
+        <div class="properties-dropdown">
+          <a class="properties-dropdown-trigger" href="{{ url_for('sold_properties') }}">Properties</a>
+          <div class="properties-dropdown-menu">
+            <a href="{{ url_for('sold_properties') }}">Sold Properties</a>
+            <a href="{{ url_for('ongoing_properties') }}">Ongoing Properties</a>
+          </div>
+        </div>
         <a href="{{ url_for('index') }}#resources">Resources</a>
       </nav>
 
@@ -37,6 +44,11 @@
           <a href="{{ url_for('index') }}#nri-support">For NRIs</a>
           <a href="{{ url_for('index') }}#nagpur">Nagpur</a>
           <a href="{{ url_for('about') }}">About Us</a>
+          <details class="mobile-property-menu">
+            <summary>Properties</summary>
+            <a href="{{ url_for('sold_properties') }}">Sold Properties</a>
+            <a href="{{ url_for('ongoing_properties') }}">Ongoing Properties</a>
+          </details>
           <a href="{{ url_for('index') }}#resources">Resources</a>
           <a href="{{ url_for('index') }}#enquiry">Make an Enquiry</a>
           {% if current_user %}

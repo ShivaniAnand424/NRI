@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+  {% include 'partials/_head.html' %}
+</head>
+
+<body id="top">
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  {% include 'partials/_header.html' %}
+
+  <main id="main-content">
+    {% include 'partials/_flash.html' %}
+
+    <section class="section prop-detail-section" aria-labelledby="property-name">
+      <div class="container">
+        <a class="prop-back"
+           href="{{ url_for('sold_properties' if property.status == 'sold' else 'ongoing_properties') }}">
+          ← Back to {{ 'sold' if property.status == 'sold' else 'ongoing' }} properties
+        </a>
+
+        <div class="prop-detail">
+          <div class="prop-detail-main">
+            <div class="prop-media prop-media-lg{% if property.status == 'sold' %} is-sold{% endif %}">
+              {% if property.has_image %}
+                <img src="{{ url_for('static', filename=property.image) }}"
+                     alt="{{ property.name }} brochure cover">
+              {% else %}
+                <div class="prop-placeholder">{{ property.name }}</div>
+              {% endif %}
+              <span class="prop-badge prop-badge-{{ property.status }}">
+                {{ 'Sold · Successfully Managed' if property.status == 'sold' else 'Ongoing' }}
+              </span>
+            </div>
+
+            <p class="eyebrow">{{ property.type }} · {{ property.developer }}</p>
+            <h1 id="property-name">{{ property.name }}</h1>
+            <p class="prop-loc">{{ property.location }}</p>
+            <p class="prop-summary">{{ property.summary }}</p>
+
+            <dl class="prop-facts prop-facts-lg">
+              {% for label, value in property.card_facts %}
+                <div><dt>{{ label }}</dt><dd>{{ value }}</dd></div>
+              {% endfor %}
+            </dl>
+
+            <h2 class="prop-h2">Key highlights</h2>
+            <ul class="prop-list-plain">
+              {% for highlight in property.highlights %}
+                <li>{{ highlight }}</li>
+              {% endfor %}
+            </ul>
+
+            <h2 class="prop-h2">Amenities &amp; features</h2>
+            <ul class="prop-chips">
+              {% for amenity in property.amenities %}
+                <li>{{ amenity }}</li>
+              {% endfor %}
+            </ul>
+
+            {% if property.status == 'sold' %}
+              <p class="prop-trust"><strong>Track record.</strong> {{ property.sold_note }} {{ partner_line }}.</p>
+            {% endif %}
+          </div>
+
+          <aside class="prop-detail-side" aria-label="Property documents">
+            <div class="prop-panel">
+              <p class="eyebrow">Property documents</p>
+              <h2>Layout plans</h2>
+              {% if current_user %}
+                {% if documents %}
+                  <ul class="prop-files">
+                    {% for label, key in documents %}
+                      <li>
+                        <a href="{{ url_for('property_file', slug=property.slug, name=key) }}"
+                           target="_blank" rel="noopener noreferrer">{{ label }} <span aria-hidden="true">→</span></a>
+                      </li>
+                    {% endfor %}
+                  </ul>
+                {% else %}
+                  <p>Documents are not available for this property yet.</p>
+                {% endif %}
+              {% else %}
+                <p>Log in to view the layout plan and any available property documents.</p>
+                <a class="button button-gold"
+                   href="{{ url_for('login', next=request.path) }}">Log in to view documents</a>
+                <a class="button button-outline-dark"
+                   href="{{ url_for('register', next=request.path) }}">Create an account</a>
+              {% endif %}
+              <a class="button button-outline-dark"
+                 href="https://wa.me/{{ site.whatsapp_number }}?text={{ ('Hello NRIPMC, I would like details about ' ~ property.name)|urlencode }}"
+                 target="_blank" rel="noopener noreferrer">Ask us about this property</a>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  {% include 'partials/_footer.html' %}
+</body>
+</html>

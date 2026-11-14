@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  {% include 'partials/_head.html' %}
+</head>
+
+<body id="top">
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  {% include 'partials/_header.html' %}
+
+  <main id="main-content">
+    {% include 'partials/_flash.html' %}
+
+    <section class="section prop-hero" aria-labelledby="properties-title">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">Our portfolio</p>
+          <h1 id="properties-title">
+            {{ 'Sold Properties' if property_status == 'sold' else 'Ongoing Properties' }}
+          </h1>
+          <p>
+            {{ partner_line }}. Explore projects and property information in and
+            around Nagpur.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section prop-list" aria-label="Property listings">
+      <div class="container">
+        {% if properties %}
+          <div class="prop-grid">
+            {% for p in properties %}
+              <article class="prop-card{% if p.status == 'sold' %} is-sold{% endif %}">
+                <a class="prop-media" href="{{ url_for('property_detail', slug=p.slug) }}"
+                   aria-label="View {{ p.name }} details">
+                  {% if p.has_image %}
+                    <img src="{{ url_for('static', filename=p.image) }}"
+                         alt="{{ p.name }} brochure cover" loading="lazy">
+                  {% else %}
+                    <div class="prop-placeholder">{{ p.name }}</div>
+                  {% endif %}
+                  <span class="prop-badge prop-badge-{{ p.status }}">
+                    {{ 'Sold · Successfully Managed' if p.status == 'sold' else 'Ongoing' }}
+                  </span>
+                </a>
+
+                <div class="prop-body">
+                  <p class="prop-type">{{ p.type }} · {{ p.developer }}</p>
+                  <h2><a href="{{ url_for('property_detail', slug=p.slug) }}">{{ p.name }}</a></h2>
+                  <p class="prop-loc">{{ p.location }}</p>
+                  <p>{{ p.summary }}</p>
+
+                  <dl class="prop-facts">
+                    {% for label, value in p.card_facts %}
+                      <div><dt>{{ label }}</dt><dd>{{ value }}</dd></div>
+                    {% endfor %}
+                  </dl>
+
+                  <div class="prop-actions">
+                    <a class="button button-outline-dark"
+                       href="{{ url_for('property_detail', slug=p.slug) }}">
+                      View details
+                    </a>
+                  </div>
+                </div>
+              </article>
+            {% endfor %}
+          </div>
+        {% else %}
+          <div class="prop-empty">
+            <h2>No ongoing properties are listed right now</h2>
+            <p>Please contact us to ask about upcoming projects.</p>
+            <a class="button button-gold" href="{{ url_for('index', _anchor='enquiry') }}">
+              Make an enquiry
+            </a>
+          </div>
+        {% endif %}
+      </div>
+    </section>
+  </main>
+
+  {% include 'partials/_footer.html' %}
+</body>
+</html>
