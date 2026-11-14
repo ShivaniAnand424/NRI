@@ -58,25 +58,6 @@ PROPERTIES = [
     # },
 ]
 
-PROPERTY_CATEGORIES = [
-    {
-        "name": "Apartments",
-        "image": "property-1.jpg",
-        "alt": "Apartments property category",
-    },
-    {
-        "name": "Residential Plots",
-        "image": "property-2.jpg",
-        "alt": "Residential plots property category",
-    },
-    {
-        "name": "Farm Plots",
-        "image": "property-3.png",
-        "alt": "Farm plots property category",
-    },
-]
-
-
 @app.teardown_appcontext
 def close_db(_error=None):
     db = g.pop("db", None)
@@ -119,14 +100,6 @@ def index():
 @app.route("/our-services")
 def our_services():
     return render_template("services.html")
-
-
-@app.route("/property-layout")
-def property_layout():
-    return render_template(
-        "property_layout.html",
-        categories=PROPERTY_CATEGORIES,
-    )
 
 
 @app.route("/about")
