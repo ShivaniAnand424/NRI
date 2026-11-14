@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% include 'partials/_head.html' %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/properties.css') }}">
+  <title>Properties | NRIPMC</title>
+</head>
+<body>
+  {% include 'partials/_header.html' %}
+  {% include 'partials/_flash.html' %}
+
+  <main class="pm-wrap">
+    <section class="pm-hero">
+      <h1>Our Properties</h1>
+      <p>A proven track record in Nagpur real estate. {{ partner_line }}.</p>
+    </section>
+
+    <nav class="pm-tabs" aria-label="Filter properties">
+      <a href="{{ url_for('properties.listing', tab='all') }}"  class="{{ 'active' if tab == 'all' }}">All <span>{{ counts.all }}</span></a>
+      <a href="{{ url_for('properties.listing', tab='sale') }}" class="{{ 'active' if tab == 'sale' }}">For Sale <span>{{ counts.sale }}</span></a>
+      <a href="{{ url_for('properties.listing', tab='sold') }}" class="{{ 'active' if tab == 'sold' }}">Sold / Transacted <span>{{ counts.sold }}</span></a>
+    </nav>
+
+    {% if properties %}
+    <div class="pm-grid">
+      {% for p in properties %}
+      <article class="pm-card {{ 'is-sold' if p.status == 'sold' }}">
+        <a class="pm-card-media" href="{{ url_for('properties.detail', slug=p.slug) }}">
+          {% if p.has_image %}
+            <img src="{{ url_for('static', filename=p.image) }}" alt="{{ p.name }}" loading="lazy">
+          {% else %}
+            <div class="pm-placeholder"><span>{{ p.name }}</span></div>
+          {% endif %}
+          <span class="pm-badge {{ 'pm-badge-sold' if p.status == 'sold' else 'pm-badge-sale' }}">
+            {{ 'Sold · Successfully Managed' if p.status == 'sold' else 'For Sale' }}
+          </span>
+        </a>
+
+        <div class="pm-card-body">
+          <p class="pm-type">{{ p.type }}</p>
+          <h3><a href="{{ url_for('properties.detail', slug=p.slug) }}">{{ p.name }}</a></h3>
+          <p class="pm-loc">📍 {{ p.location }}</p>
+
+          <ul class="pm-facts">
+            {% if p.beds %}<li><b>{{ p.beds }}</b> Beds</li>{% endif %}
+            {% if p.baths %}<li><b>{{ p.baths }}</b> Baths</li>{% endif %}
+            {% for label, value in p.card_facts %}
+              <li><span>{{ label }}</span><b>{{ value }}</b></li>
+            {% endfor %}
+          </ul>
+
+          {% if p.status == 'sale' %}
+            <p class="pm-price">Price on Request</p>
+            <div class="pm-actions">
+              <a class="pm-btn pm-btn-ghost" href="{{ url_for('properties.detail', slug=p.slug) }}">View Details</a>
+              <a class="pm-btn pm-btn-primary" href="{{ url_for('properties.go', slug=p.slug, action='enquire') }}">Enquire Now</a>
+            </div>
+          {% else %}
+            <p class="pm-sold-note">{{ p.sold_note }}</p>
+            <div class="pm-actions">
+              <a class="pm-btn pm-btn-ghost" href="{{ url_for('properties.detail', slug=p.slug) }}">View Project</a>
+            </div>
+          {% endif %}
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+    {% else %}
+    <div class="pm-empty">
+      <h3>New listings are coming soon</h3>
+      <p>Register as a client to be the first to know when new properties go live.</p>
+      <a class="pm-btn pm-btn-primary" href="{{ url_for('properties.register') }}">Client Login / Register</a>
+    </div>
+    {% endif %}
+  </main>
+
+  {% include 'partials/_footer.html' %}
+</body>
+</html>

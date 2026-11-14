@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% include 'partials/_head.html' %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/properties.css') }}">
+  <title>{{ 'Create Client Account' if mode == 'register' else 'Client Login' }} | NRIPMC</title>
+</head>
+<body>
+  {% include 'partials/_header.html' %}
+  {% include 'partials/_flash.html' %}
+
+  <main class="pm-wrap">
+    <div class="pm-auth">
+      {% if gate_prop %}
+        <div class="pm-gate-banner">
+          🔒 To <b>{{ gate_action_label }}</b> for <b>{{ gate_prop.name }}</b>,
+          please {{ 'create a free account' if mode == 'register' else 'log in' }}.
+        </div>
+      {% endif %}
+
+      <h1>{{ 'Create your client account' if mode == 'register' else 'Client Login' }}</h1>
+
+      <form method="post" class="pm-form" autocomplete="on">
+        <input type="hidden" name="pm_csrf" value="{{ pm_csrf() }}">
+        <input type="hidden" name="property" value="{{ gate_slug }}">
+        <input type="hidden" name="action" value="{{ gate_action }}">
+
+        {% if mode == 'register' %}
+          <label>Full name
+            <input type="text" name="full_name" value="{{ request.form.get('full_name', '') }}" required autocomplete="name">
+          </label>
+        {% endif %}
+
+        <label>Email
+          <input type="email" name="email" value="{{ request.form.get('email', '') }}" required autocomplete="email">
+        </label>
+
+        {% if mode == 'register' %}
+          <label>Phone / WhatsApp (with country code)
+            <input type="tel" name="phone" placeholder="+1 555 123 4567" value="{{ request.form.get('phone', '') }}" required autocomplete="tel">
+          </label>
+          <label>Country of residence
+            <input type="text" name="country" placeholder="e.g. USA, UK, UAE" value="{{ request.form.get('country', '') }}" autocomplete="country-name">
+          </label>
+        {% endif %}
+
+        <label>Password {% if mode == 'register' %}<small>(min 8 characters)</small>{% endif %}
+          <input type="password" name="password" required minlength="{{ 8 if mode == 'register' else 1 }}"
+                 autocomplete="{{ 'new-password' if mode == 'register' else 'current-password' }}">
+        </label>
+
+        <button type="submit" class="pm-btn pm-btn-primary pm-btn-block">
+          {{ 'Register & Continue' if mode == 'register' else 'Log in & Continue' }}
+        </button>
+      </form>
+
+      <p class="pm-small">
+        {% if mode == 'register' %}
+          Already have an account?
+          <a href="{{ url_for('properties.login', property=gate_slug, action=gate_action) }}">Log in</a>
+        {% else %}
+          New here?
+          <a href="{{ url_for('properties.register', property=gate_slug, action=gate_action) }}">Create a free account</a>
+        {% endif %}
+      </p>
+    </div>
+  </main>
+
+  {% include 'partials/_footer.html' %}
+</body>
+</html>

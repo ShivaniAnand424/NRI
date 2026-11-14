@@ -1,0 +1,53 @@
+=====================================================================
+ EDIT 1 - app.py  (your existing file; add the marked lines)
+=====================================================================
+import os                                              # <-- add (if not already there)
+from flask import Flask, render_template
+from properties import bp as properties_bp            # <-- add
+
+app = Flask(__name__)
+# CHANGED: read the secret from the environment (login security depends on it)
+app.secret_key = os.environ.get("SECRET_KEY", "dev-secret-key")
+app.register_blueprint(properties_bp)                  # <-- add, BEFORE any catch-all route like '/<path:dummy>'
+
+# ... the rest of your app.py stays the same ...
+
+
+=====================================================================
+ EDIT 2 - templates/partials/_header.html  (navbar)
+ Order: Home > About Us > Properties > Services > Contact > [Client Login]
+=====================================================================
+<a href="{{ url_for('properties.listing') }}">Properties</a>      <!-- put between About Us and Services -->
+
+<!-- put this LAST, after "Contact Us" (top-right) -->
+{% if current_client() %}
+  <span class="pm-nav-hello">Hi, {{ current_client()['full_name'].split()[0] }}</span>
+  <form class="pm-nav-form" method="post" action="{{ url_for('properties.logout') }}">
+    <input type="hidden" name="pm_csrf" value="{{ pm_csrf() }}">
+    <button type="submit" class="pm-nav-btn">Logout</button>
+  </form>
+{% else %}
+  <a class="pm-nav-btn" href="{{ url_for('properties.login') }}">Client Login / Register</a>
+{% endif %}
+
+
+=====================================================================
+ EDIT 3 - templates/partials/_head.html  (so the navbar button is styled on every page)
+=====================================================================
+<link rel="stylesheet" href="{{ url_for('static', filename='css/properties.css') }}">
+
+
+=====================================================================
+ EDIT 4 - .gitignore  (IMPORTANT - keeps client data off GitHub)
+=====================================================================
+nri_clients.db
+*.db
+__pycache__/
+
+
+=====================================================================
+ Optional environment variables
+=====================================================================
+NRI_WHATSAPP   = your WhatsApp number, digits only, e.g. 919876543210
+NRI_ADMIN_KEY  = any long secret; then open  /admin/leads?key=YOUR_KEY  to see leads
+SECRET_KEY     = long random string (python -c "import secrets;print(secrets.token_hex(32))")

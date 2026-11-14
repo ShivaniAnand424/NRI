@@ -14,31 +14,23 @@
     </div>
 
     <div class="gallery-grid">
-
-      <figure class="gallery-item">
-        <img src="{{ url_for('static', filename='images/properties/property-1.jpg') }}"
-             alt="Property 1 in Nagpur" loading="lazy">
-        <a class="button button-outline-dark"
-           href="https://wa.me/{{ site.whatsapp_number }}?text={{ 'Hello NRIPMC, I would like details about the property 1.'|urlencode }}"
-           target="_blank" rel="noopener">WhatsApp for details</a>
-      </figure>
-
-      <figure class="gallery-item">
-        <img src="{{ url_for('static', filename='images/properties/property-2.jpg') }}"
-             alt="Property 2 in Nagpur" loading="lazy">
-        <a class="button button-outline-dark"
-           href="https://wa.me/{{ site.whatsapp_number }}?text={{ 'Hello NRIPMC, I would like details about the property 2.'|urlencode }}"
-           target="_blank" rel="noopener">WhatsApp for details</a>
-      </figure>
-
-      <figure class="gallery-item">
-        <img src="{{ url_for('static', filename='images/properties/property-3.png') }}"
-             alt="Property 3 in Nagpur" loading="lazy">
-        <a class="button button-outline-dark"
-           href="https://wa.me/{{ site.whatsapp_number }}?text={{ 'Hello NRIPMC, I would like details about the property 3.'|urlencode }}"
-           target="_blank" rel="noopener">WhatsApp for details</a>
-      </figure>
-
+      {% for property in properties %}
+        <figure class="gallery-item">
+          <img
+            src="{{ url_for('static', filename='images/properties/' ~ property.image) }}"
+            alt="{{ property.alt or property.name }}"
+            loading="lazy"
+          >
+          <figcaption>
+            <strong>{{ property.name }}</strong>
+            <span>{{ property.location }}</span>
+            <small>{{ property.type }}</small>
+          </figcaption>
+          <a class="button button-outline-dark"
+             href="https://wa.me/{{ site.whatsapp_number }}?text={{ ('Hello NRIPMC, I would like details about ' ~ property.name)|urlencode }}"
+             target="_blank" rel="noopener">WhatsApp for details</a>
+        </figure>
+      {% endfor %}
     </div>
   </div>
 </section>
