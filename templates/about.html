@@ -45,7 +45,7 @@
         <div class="leader-grid">
           {% for leader in leaders %}
             <article class="leader-card">
-              <img src="{{ url_for('static', filename='images/' + leader.photo) }}" alt="{{ leader.name }}">
+              <img src="{{ url_for('static', filename='images/' ~ leader.photo) }}" alt="{{ leader.name }}">
               <div class="leader-body">
                 <h3>{{ leader.name }}</h3>
                 <p class="person-role">{{ leader.role }}</p>
@@ -121,7 +121,7 @@
         <div class="team-grid">
           {% for person in team %}
             <article class="team-card">
-              <img src="{{ url_for('static', filename='images/' + person.photo) }}" alt="{{ person.name }}">
+              <img src="{{ url_for('static', filename='images/' ~ person.photo) }}" alt="{{ person.name }}">
               <h3>{{ person.name }}</h3>
               <p>{{ person.role }}</p>
               <p>{{ person.bio }}</p>
