@@ -14,7 +14,7 @@ LEADERS = [
     {
         "name": "Rahul Gulhane",
         "role": "Managing Director",
-        "photo": "rahul-gulhane.jpg",
+        "photo": "Rahul Gulhane.jpg",
         "bio": (
             "Rahul brings years of experience in the real estate sector and plays "
             "a key role in the growth of the company. His expertise in property "
@@ -25,7 +25,7 @@ LEADERS = [
     {
         "name": "Prashant Kapile",
         "role": "Managing Director",
-        "photo": "prashant-kapile.jpg",
+        "photo": "Prashant Kapile.jpg",
         "bio": (
             "A leader with a deep understanding of real estate trends and market "
             "dynamics, Prashant has been instrumental in shaping Shree Hari Realtors "
@@ -40,25 +40,25 @@ TEAM = [
     {
         "name": "Nikhil Pote",
         "role": "Senior Sales Executive",
-        "photo": "nikhil-pote.jpg",
+        "photo": "Nikhil Pote.jpg",
         "bio": "Leads client relationships, understands property requirements and guides buyers through the sales process with professionalism and trust.",
     },
     {
         "name": "Sunil Gulhane",
         "role": "Senior Sales Executive",
-        "photo": "sunil-gulhane.jpg",
+        "photo": "Sunil Gulhane.jpg",
         "bio": "Leads client relationships, understands property requirements and guides buyers through the sales process with professionalism and trust.",
     },
     {
         "name": "Jaswant Singh",
         "role": "Sales Executive",
-        "photo": "jaswant-singh.jpg",
+        "photo": "Jaswant Singh.jpg",
         "bio": "Assists clients in finding suitable properties, conducts site visits, follows up with leads and explains project details.",
     },
     {
         "name": "Aayushi Dighore",
         "role": "Digital Marketing Head",
-        "photo": "aayushi-dighore.jpg",
+        "photo": "Aayushi Dighore.jpg",
         "bio": "Develops and runs digital marketing strategies, including branding, social media, SEO and advertising campaigns.",
     },
 ]
