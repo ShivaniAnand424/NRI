@@ -47,38 +47,15 @@ SITE = {
 # Add only real, approved listings here (with the owner's/developer's permission).
 # Put the photo in static/images/properties/ and use its file name below.
 PROPERTIES = [
-    {
-        "name": "Nirmal Keshavam-15",
-        "location": "Nagpur, Maharashtra",
-        "type": "Residential plotted layout",
-        "price": "Sold / fully transacted",
-        "image": "keshavam-15.jpg",
-        "alt": "Nirmal Keshavam-15 residential layout brochure cover",
-    },
-    {
-        "name": "Keshavam City-11",
-        "location": "Nagpur, Maharashtra",
-        "type": "Residential plotted layout",
-        "price": "Sold / fully transacted",
-        "image": "keshavam-city-11.jpg",
-        "alt": "Keshavam City-11 residential layout brochure cover",
-    },
-    {
-        "name": "Saraswati Nagar-3",
-        "location": "Mouza Rui, Nagpur (Gramin)",
-        "type": "RERA residential layout",
-        "price": "Sold / fully transacted",
-        "image": "saraswati-nagar-3.jpg",
-        "alt": "Saraswati Nagar-3 residential layout brochure cover",
-    },
-    {
-        "name": "Sai Pride-III",
-        "location": "Manewada, Nagpur",
-        "type": "1, 2 & 3 BHK luxury flats",
-        "price": "Sold / fully transacted",
-        "image": "sai-pride-iii.jpg",
-        "alt": "Sai Pride-III luxury apartment brochure cover",
-    },
+    # {
+    #     "name": "Project name",
+    #     "location": "Area, Nagpur",
+    #     "type": "2 & 3 BHK apartments",
+    #     "price": "From ₹00 lakh",
+    #     "rera": "P50000000000",          # optional
+    #     "image": "project-name.jpg",
+    #     "alt": "Exterior view of Project name in Area, Nagpur",
+    # },
 ]
 
 
