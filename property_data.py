@@ -186,6 +186,47 @@ PROPERTIES = [
         "extra_files": [("Typical 2nd - 6th floor plan", "sai-pride-iii/typical-floor.jpg")],
         "brochure_file": None,
     },
+    {
+        "slug": "highway-prime-mouza-panjari",
+        "name": "Highway Prime - Mouza Panjari",
+        "developer": "Shree Hari Realtors",
+        "type": "Residential Plotted Layout",
+        "status": "sale",
+        "location": "Mouza Panjari, Nagpur, Maharashtra",
+        "summary": (
+            "A premium residential plotted layout close to the Outer Ring Road, "
+            "with strong everyday connectivity, nearby schools, metro access and "
+            "a future-ready lifestyle environment for families."
+        ),
+        "card_facts": [
+            ("Plots", "48"),
+            ("Plot size", "95 – 454 sq.m"),
+            ("Road width", "9 m / 12 m / 18 m"),
+            ("Location", "Outer Ring Road touch"),
+        ],
+        "highlights": [
+            "48 residential plots in a premium gated layout",
+            "Near Mouza Panjari and the Outer Ring Road corridor",
+            "Excellent access to schools, hospitals, metro, and city landmarks",
+            "Open spaces, entry gate, and long-term appreciation potential",
+        ],
+        "amenities": [
+            "Entry Gate", "Water Supply", "Cement Road", "Sewage Pipeline",
+            "Roadside Tree Plantation", "Green Gym", "Storm Water Drainage",
+            "Layout Fencing & Demarcation",
+        ],
+        "image": "images/properties/highway-prime-mouza-panjari.jpg",
+        "price": "₹ On request",
+        "private_facts": [
+            ("Connectivity", "Near Outer Ring Road, MIHAN and Khapri Metro"),
+            ("Nearby landmarks", "Orange Grove School, NCI, Mihan, Samruddhi Circle"),
+            ("Project type", "Gated plotted residential development"),
+            ("Marketed by", "Shree Hari Realtors"),
+        ],
+        "video_url": None,
+        "layout_file": "highway-prime-mouza-panjari/layout.jpg",
+        "brochure_file": None,
+    },
 
     # ------------------------------------------------------------------ FOR SALE
     # Copy this template when you have a live listing, then set "status": "sale".
