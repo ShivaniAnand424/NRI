@@ -549,6 +549,196 @@ PROPERTIES = [
         ],
     },
 
+        {
+        "slug": "nagpur-marina",
+        "name": "Nagpur Marina",
+        "developer": "The House of Abhinandan Lodha",
+        "type": "Luxury Villa Land",
+        "status": "ongoing",
+        "location": "Near Samruddhi Circle, Nagpur",   # TODO: add exact locality
+        "summary": (
+            "A master-planned 78-acre luxury land development with a 3-acre "
+            "man-made beach and 40+ amenities, close to Samruddhi Circle, "
+            "MIHAN-SEZ and the proposed IBFC."
+        ),
+        "card_facts": [
+            ("Land area", "78 acres"),
+            ("Signature feature", "3-acre man-made beach"),
+            ("RERA", "PP1190002502095"),      # TODO: verify against the brochure
+        ],
+        "highlights": [
+            "78 acres of integrated, low-density planning",
+            "3-acre man-made beach as the central feature",
+            "40+ world-class amenities",
+            "Samruddhi Circle 5 min, MIHAN-SEZ 10 min",
+        ],
+        "amenities": [
+            "3-Acre Man-Made Beach", "40+ Amenities", "Integrated Lifestyle Ecosystem",
+            "Low-Density Planning", "Experience-Led Planning",
+        ],
+        "nearby": [
+            ("Samruddhi Circle", "5 min"),
+            ("MIHAN - SEZ", "10 min"),
+            ("IBFC", "10 min"),
+            ("Butibori MIDC", "20 min"),
+            ("Hingna MIDC", "20 min"),
+            ("International Airport", "25 min"),
+        ],
+        "image": "images/properties/nagpur-marina.jpg",
+        "price": "₹ On request",
+        "price_note": "Our team will share current pricing and availability.",
+        "private_facts": [
+            ("RERA No.", "PP1190002502095"),
+            ("Developer", "The House of Abhinandan Lodha"),
+            ("Marketed by", "Shree Hari Realtors"),
+            ("Project type", "Branded villa land in a master-planned ecosystem"),
+            ("Total area", "78 acres"),
+            ("Key feature", "3-acre man-made beach"),
+            ("Amenities", "40+"),
+        ],
+        "video_url": None,
+        "layout_file": "nagpur-marina/layout.jpg",
+        "brochure_file": None,
+        "map_url": "",
+        "details": [
+            ("RERA No.", "PP1190002502095"),
+            ("Developer", "The House of Abhinandan Lodha"),
+            ("Marketed by", "Shree Hari Realtors"),
+            ("Project type", "Branded villa land in a master-planned ecosystem"),
+            ("Total area", "78 acres"),
+            ("Key feature", "3-acre man-made beach"),
+            ("Amenities", "40+"),
+        ],
+        "specs": [],
+        "card": "nagpur-marina-card.jpg",
+        "hero": "nagpur-marina-hero.jpg",
+        "gallery": [],
+        "plans": [],
+    },
+    {
+        "slug": "kalpataru-launch-code-nagpur",
+        "name": "Kalpataru Launch Code Nagpur",
+        "developer": "Kalpataru",
+        "type": "Premium Plotted Development",
+        "status": "ongoing",
+        "location": "Khadka, Hingna Road, Near Samruddhi Circle, Nagpur - 441122",
+        "summary": (
+            "A 37-acre gated plotted community near Samruddhi Circle, with "
+            "30+ themed amenities, 1.54 lakh sq.ft of recreational space and "
+            "customizable villa plans."
+        ),
+        "card_facts": [
+            ("Land area", "37 acres"),
+            ("Plot size", "1,320 – 2,400 sq.ft"),
+            ("RERA", "P50500077372"),
+        ],
+        "highlights": [
+            "RERA registered: P50500077372",
+            "37 acres of plotted development in a gated community",
+            "30+ themed amenities",
+            "1.54 lakh sq.ft of recreational space",
+        ],
+        "amenities": [
+            "Premium Gated Community", "30+ Themed Amenities",
+            "Recreational Space", "Clubhouse", "Landscaped Greens",
+            "Customizable Villa Plans",
+        ],
+        "image": "images/properties/kalpataru-launch-code-nagpur.jpg",
+        "price": "₹ On request",
+        "price_note": "Our team will share current pricing and availability.",
+        "private_facts": [
+            ("RERA No.", "P50500077372"),
+            ("Developer", "Kalpataru"),
+            ("Marketed by", "Shree Hari Realtors"),
+            ("Site address", "Khadka, Hingna Road, Near Samruddhi Circle, Nagpur - 441122"),
+            ("Total area", "37 acres"),
+            ("Plot sizes", "1,320 sq.ft to 2,400 sq.ft"),
+            ("Recreational space", "1.54 lakh sq.ft"),
+        ],
+        "video_url": None,
+        "layout_file": "kalpataru-launch-code-nagpur/layout.jpg",
+        "brochure_file": None,
+        "map_url": "",
+        "details": [
+            ("RERA No.", "P50500077372"),
+            ("Developer", "Kalpataru"),
+            ("Marketed by", "Shree Hari Realtors"),
+            ("Site address", "Khadka, Hingna Road, Near Samruddhi Circle, Nagpur - 441122"),
+            ("Total area", "37 acres"),
+            ("Plot sizes", "1,320 sq.ft to 2,400 sq.ft"),
+            ("Recreational space", "1.54 lakh sq.ft"),
+        ],
+        "specs": [],
+        "card": "kalpataru-launch-code-nagpur-card.jpg",
+        "hero": "kalpataru-launch-code-nagpur-hero.jpg",
+        "gallery": [],
+        "plans": [],
+    },
+    {
+        "slug": "infinia-city",
+        "name": "Infinia City",
+        "developer": "Infinia",      # TODO: add the developer's full name
+        "type": "Villa Plots & 3 BHK Villas",
+        "status": "ongoing",
+        "location": "Mohgaon, Wardha Road, Nagpur",
+        "summary": (
+            "A secured gated villa-plot community spread over 120+ acres, "
+            "500 m from a proposed metro station, with four exclusive zones "
+            "for sports, entertainment and relaxation."
+        ),
+        "card_facts": [
+            ("Land area", "120+ acres"),
+            ("Plot size", "1,000 – 5,000 sq.ft"),
+            ("Villas", "3 BHK, 1,050 & 1,250 sq.ft"),
+        ],
+        "highlights": [
+            "120+ acres of villa plots in a secured gated community",
+            "500 m from the proposed metro station",
+            "4 exclusive zones for sports, entertainment and relaxation",
+            "3 BHK villa options of 1,050 and 1,250 sq.ft",
+        ],
+        "amenities": [
+            "1.5 Lakh sq.ft Infinia Park",
+            "60,000 sq.ft Infinia Forest Garden",
+            "44,000 sq.ft Infinia Sports Centre",
+            "65,000 sq.ft Club Infinia",
+            "Secured Gated Community",
+        ],
+        "image": "images/properties/infinia-city.jpg",
+        "price": "₹ On request",
+        "price_note": "Our team will share current pricing and availability.",
+        "private_facts": [
+            ("Developer", "Infinia"),      # TODO
+            ("Marketed by", "Shree Hari Realtors"),
+            ("Location", "Mohgaon, Wardha Road, Nagpur"),
+            ("Total area", "120+ acres"),
+            ("Plot sizes", "1,000 to 5,000 sq.ft"),
+            ("Villa options", "3 BHK villa, 1,050 sq.ft and 1,250 sq.ft"),
+            ("Internal roads", "9 m, 12 m and 15 m wide; 18 m wide road; proposed 60 m wide road nearby"),
+        ],
+        "video_url": None,
+        "layout_file": "infinia-city/layout.jpg",
+        "extra_files": [
+            ("3 BHK villa plan - 1,050 sq.ft", "infinia-city/villa-1050.jpg"),
+            ("3 BHK villa plan - 1,250 sq.ft", "infinia-city/villa-1250.jpg"),
+        ],
+        "brochure_file": None,
+        "map_url": "",
+        "details": [
+            ("Developer", "Infinia"),      # TODO
+            ("Marketed by", "Shree Hari Realtors"),
+            ("Location", "Mohgaon, Wardha Road, Nagpur"),
+            ("Total area", "120+ acres"),
+            ("Plot sizes", "1,000 to 5,000 sq.ft"),
+            ("Villa options", "3 BHK villa, 1,050 sq.ft and 1,250 sq.ft"),
+        ],
+        "specs": [],
+        "card": "infinia-city-card.jpg",
+        "hero": "infinia-city-hero.jpg",
+        "gallery": [],
+        "plans": [],
+    },
+
     # ------------------------------------------------------------------ FOR SALE
     # Copy this template when you have a live listing, then set "status": "sale".
     #
