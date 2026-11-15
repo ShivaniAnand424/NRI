@@ -1,5 +1,6 @@
 import os
 import secrets
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from urllib.parse import urlsplit
 
@@ -229,7 +230,10 @@ def login():
         password = request.form.get("password", "")
         form = {"email": email}
         user = get_db().execute(
-            text("SELECT id, password_hash FROM users WHERE email = :email"),
+            text(
+                "SELECT id, full_name, email, phone, country, password_hash "
+                "FROM users WHERE email = :email"
+            ),
             {"email": email},
         ).mappings().first()
 
@@ -238,6 +242,16 @@ def login():
         else:
             session.clear()
             session["user_id"] = user["id"]
+            login_time = datetime.now(timezone(timedelta(hours=5, minutes=30)))
+            send_alert(
+                f"NRIPMC login: {user['full_name']}",
+                "A registered client just logged in.\n\n"
+                f"Name: {user['full_name']}\n"
+                f"Email: {user['email']}\n"
+                f"Phone: {user['phone'] or '-'}\n"
+                f"Country: {user['country'] or '-'}\n"
+                f"Time (IST): {login_time:%d %b %Y, %I:%M %p}\n",
+            )
             flash("You are now logged in.", "success")
             return redirect(safe_next_url(request.form.get("next", "")) or url_for("account"))
 
