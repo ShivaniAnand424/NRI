@@ -186,6 +186,231 @@ PROPERTIES = [
         "extra_files": [("Typical 2nd - 6th floor plan", "sai-pride-iii/typical-floor.jpg")],
         "brochure_file": None,
     },
+
+    {
+        "slug": "mukunda-keshavam-9",
+        "name": "Mukunda Keshavam-9",
+        "developer": "Keshavam Infra",
+        "type": "Residential Plotted Layout",
+        "status": "sold",
+        "location": "Kh. No. 67, Mouza Wagdara, Tah. Hingna, Nagpur",
+        "summary": (
+            "A residential plotted layout in Hingna with a clubhouse, open and "
+            "amenity spaces, and frontage on a proposed 24 m wide road, close to "
+            "the upcoming metro stations and Hingna-Wanadongri Road."
+        ),
+        "card_facts": [
+            ("Plots", "28"),
+            ("Plot size", "204 – 2,257 sq.m"),
+            ("Road width", "9 m / 24 m"),
+        ],
+        "highlights": [
+            "28 residential plots",
+            "Proposed 24 m wide road and 9 m internal roads",
+            "Clubhouse, open space and amenity space",
+            "Near upcoming metro stations, D-Mart and Hingna Tehsil",
+        ],
+        "amenities": [
+            "Green Gym", "Kids Play Area", "Landscape Garden",
+            "Security Entry Gate", "Jogging Track", "Senior Sit Out",
+            "Cement Road", "Storm Water Drain", "Rain Water Harvesting",
+            "Electricity", "Clubhouse",
+        ],
+        "sold_note": "Fully transacted and managed for NRI & domestic clients.",
+        "image": "images/properties/mukunda-keshavam-9.jpg",
+        "price": None,
+        "private_facts": [
+            ("Survey details", "Kh. No. 67, Mouza Wagdara, Tah. Hingna, Dist. Nagpur"),
+            ("Plot sizes", "203.94 – 2,257.24 sq.m (2,195 – 24,297 sq.ft)"),
+            ("Most common plot", "266.46 sq.m (2,868 sq.ft), plots 4 to 6"),
+            ("Roads", "9 m internal, proposed 24 m wide road"),
+            ("Nearby", "Upcoming metro stations, D-Mart, Hingna Tehsil Office, "
+                       "Sant Gadge Maharaj College, G.H. Raisoni Public School, "
+                       "Cummins College of Engineering"),
+        ],
+        "video_url": None,
+        "layout_file": "mukunda-keshavam-9/layout.jpg",
+        "brochure_file": None,
+    },
+    {
+        "slug": "oshian-super-city-3",
+        "name": "Oshian Super City-3",
+        "developer": "Oshian Realtors India Pvt. Ltd.",
+        "type": "Residential & Commercial Plots",
+        "status": "sold",
+        "location": "Kh. No. 151, opposite Atharva Nagri-6, Besa-Pipla Road, Nagpur - 440034",
+        "summary": (
+            "An NMRDA-approved layout of 51 plots across 4.99 acres, with wide "
+            "roads on all sides, a children's park, STP and underground "
+            "electrification, on the Besa-Pipla Road corridor."
+        ),
+        "card_facts": [
+            ("Plots", "51"),
+            ("Land area", "4.99 acres"),
+            ("RERA", "P50500034657"),
+        ],
+        "highlights": [
+            "RERA registered: P50500034657",
+            "NMRDA approved",
+            "51 plots on 4.99 acres, commercial and residential",
+            "Wide roads on all sides (9 m, 12 m and 12 m D.P. road)",
+        ],
+        "amenities": [
+            "Cement Road", "Drainage Line", "Drinking Water Line",
+            "Tree Plantation", "STP", "Sewer Line", "Garden Fencing",
+            "Underground Electrification", "Children Park",
+            "Storm Water Drainage Network",
+        ],
+        "sold_note": "Fully transacted and managed for NRI & domestic clients.",
+        "image": "images/properties/oshian-super-city-3.jpg",
+        "price": None,
+        "private_facts": [
+            ("RERA No.", "P50500034657"),
+            ("Survey details", "Kh. No. 151, opposite Atharva Nagri-6, Besa-Pipla Road"),
+            ("Total plots", "51"),
+            ("Land area", "4.99 acres"),
+            ("Open space", "1,121.98 sq.m (12,077 sq.ft)"),
+            ("Roads", "9 m and 12 m wide, 12 m proposed D.P. road"),
+        ],
+        "video_url": None,
+        "layout_file": "oshian-super-city-3/layout.jpg",
+        "brochure_file": None,
+    },
+    {
+        "slug": "kasturi-hills",
+        "name": "Kasturi Hills",
+        "developer": "Ozen Realtors India Pvt. Ltd.",
+        "type": "RERA Residential Plotted Layout",
+        "status": "sold",
+        "location": "Beside Paradise Hills, Mouza Waghdara, Tah. Hingna, Nagpur - 441110",
+        "summary": (
+            "An NMRDA-sanctioned, RERA-registered plotted layout touching an 80 ft "
+            "road, next to Paradise Hills and Greenfield Township, within a short "
+            "drive of MIHAN, AIIMS and Hingna Road."
+        ),
+        "card_facts": [
+            ("Plots", "79"),
+            ("Plot size", "approx. 75 – 273 sq.m"),   # TODO: verify min/max from the area table
+            ("RERA", "P50500031145"),
+        ],
+        "highlights": [
+            "RERA registered: P50500031145",
+            "NMRDA sanctioned",
+            "80 ft road touch, adjacent to Paradise Hills",
+            "MIHAN 2 km, AIIMS 7 minutes, D-Mart 1.5 km",
+        ],
+        "amenities": [
+            "9 m and 12 m Internal Roads", "Open Space", "Amenity Space",
+            "Layout Fencing",
+        ],
+        "sold_note": "Fully transacted and managed for NRI & domestic clients.",
+        "image": "images/properties/kasturi-hills.jpg",
+        "price": None,
+        "private_facts": [
+            ("RERA No.", "P50500031145"),
+            ("Survey details", "Kh. No. 75/B/2, P.H. No. 46, Mouza Waghdara, Tah. Hingna"),
+            ("Total plots", "79"),
+            ("Amenity space", "1,616.27 sq.m"),
+            ("Roads", "9 m and 12 m internal; 24 m wide road; 80 ft road touch"),
+            ("Nearby", "Greenfield Township 500 m, Hingna Road 1.5 km, D-Mart 1.5 km, "
+                       "Raisoni College 2.5 km, YCCE 2.5 km, Lata Mangeshkar Hospital 3 km, "
+                       "MIHAN 2 km, AIIMS 7 min"),
+        ],
+        "video_url": None,
+        "layout_file": "kasturi-hills/layout.jpg",
+        "extra_files": [("Plot-wise area chart", "kasturi-hills/plot-sizes.jpg")],
+        "brochure_file": None,
+    },
+    {
+        "slug": "saraswati-nagar-5",
+        "name": "Saraswati Nagar-5",
+        "developer": "Saraswati Land Developer & Builders",
+        "type": "Residential Layout",
+        "status": "sold",
+        "location": "Kh. No. 10, P.H. No. 41, Mouza Rui, Tah. Nagpur (Gramin)",
+        "summary": (
+            "A final-demarcated residential layout of 61 plots at Mouza Rui, with "
+            "cement roads, water supply, fencing and two landscaped open spaces."
+        ),
+        "card_facts": [
+            ("Plots", "61"),
+            ("Plot size", "105 – 372 sq.m"),
+            ("Road width", "9 m / 12 m / 15 m"),
+        ],
+        "highlights": [
+            "61 plots in a final-demarcated layout",
+            "15 m wide road frontage",
+            "Open spaces of 585 sq.m and 755 sq.m",
+            "Entry gate, cement roads and green gym",
+        ],
+        "amenities": [
+            "Entry Gate", "Water Supply", "Sewage Pipe Line",
+            "Road Side Tree Plantation", "Cement Road", "Green Gym",
+            "Storm Water Drainage", "Layout Fencing & Demarcation",
+        ],
+        "sold_note": "Fully transacted and managed for NRI & domestic clients.",
+        "image": "images/properties/saraswati-nagar-5.jpg",
+        "price": None,
+        "private_facts": [
+            ("Survey details", "Kh. No. 10, P.H. No. 41, Mouza Rui, Tah. Nagpur (Gramin)"),
+            ("Plot sizes", "105.00 – 372.22 sq.m (1,130 – 4,007 sq.ft)"),
+            ("Most common plot", "105 sq.m (1,130 sq.ft)"),
+            ("Open space A", "585.25 sq.m"),
+            ("Open space B", "755.38 sq.m"),
+            ("Roads", "9 m, 12 m and 15 m wide"),
+        ],
+        "video_url": None,
+        "layout_file": "saraswati-nagar-5/layout.jpg",
+        "extra_files": [("Plot-wise size chart", "saraswati-nagar-5/plot-sizes.jpg")],
+        "brochure_file": None,
+    },
+    {
+        "slug": "ozen-city",
+        "name": "Ozen City",
+        "developer": "Ozen Realtors India Pvt. Ltd.",
+        "type": "Plotted Smart City (Phase I & II)",
+        "status": "sold",
+        "location": "Off Wardha Road, Nagpur",      # TODO: add exact locality
+        "summary": (
+            "A 32-acre, well-planned smart-city layout in two phases, organised "
+            "around a 200 ft D.P. road, with landscaped avenues and dedicated "
+            "open and amenity spaces."
+        ),
+        "card_facts": [
+            ("Land area", "32 acres"),
+            ("Phases", "2"),
+            ("Main road", "200 ft D.P. road"),
+        ],
+        "highlights": [
+            "32-acre integrated layout",
+            "200 ft wide D.P. road through the project",
+            "Phase I and Phase II plotted development",
+            "Close to Wardha Road",
+        ],
+        "amenities": [
+            "200 ft D.P. Road", "Landscaped Avenues", "Open Spaces",
+            "Amenity Spaces", "Internal Roads",
+        ],
+        "sold_note": "Fully transacted and managed for NRI & domestic clients.",
+        "image": "images/properties/ozen-city.jpg",
+        "price": None,
+        "private_facts": [
+            ("Phase I plottable area", "580,601.55 sq.ft"),
+            ("Phase I open space", "85,395.33 sq.ft"),
+            ("Phase I amenity space", "45,000.63 sq.ft"),
+            ("Phase II plottable area", "109,530.80 sq.ft"),
+            ("Phase II open space", "21,965.87 sq.ft"),
+            ("Phase II amenity space", "11,061.19 sq.ft"),
+        ],  # TODO: confirm the units (sq.ft vs sq.m) on the brochure's totals table
+        "video_url": None,
+        "layout_file": "ozen-city/layout.jpg",
+        "extra_files": [
+            ("Phase I plot chart", "ozen-city/phase-1.jpg"),
+            ("Phase II plot chart", "ozen-city/phase-2.jpg"),
+        ],
+        "brochure_file": None,
+    },
+
     {
         "slug": "highway-prime-mouza-panjari",
         "name": "Highway Prime - Mouza Panjari",
