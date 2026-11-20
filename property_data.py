@@ -739,6 +739,72 @@ PROPERTIES = [
         "plans": [],
     },
 
+    {
+        "slug": "godrej-forest-estate-3",
+        "name": "Godrej Forest Estate 3.0",
+        "developer": "Godrej Properties",
+        "type": "Resort-Style Residential Plots",
+        "status": "sale",
+        "location": "Near Samruddhi Circle, Nagpur",
+        "summary": "A 75-acre, European-theme plotted community with 50+ amenities and a Miyawaki forest, just 300 m from Samruddhi Mahamarg. EOI is now open and plots are limited.",
+        "beds": 0, "baths": 0,   # plots have no bedrooms; hide these on the card if your page shows "0"
+        "card_facts": [("Layout", "75 acres"), ("Roads", "9, 12 & 15 m wide"), ("RERA", "P50500054903")],
+        "highlights": ["EOI now open", "300 m from Samruddhi Mahamarg", "50+ amenities", "Miyawaki forest"],
+        "amenities": [
+            "Swimming pool", "Viewing deck", "Grand clubhouse", "Bird watching deck",
+            "Miyawaki forest (75,000+ plantations)", "Adventure play area",
+            "River-view residential and commercial plots", "European-theme plotting design",
+        ],
+        "image": "images/properties/godrej-forest-estate-3.jpg",   # add the photo with this file name
+        "price": "Starting from ₹ 55,00,000",
+        "private_facts": [
+            ("Developer", "Godrej Properties"),
+            ("Layout", "75 acres, European-theme plotting"),
+            ("Roads", "9 m, 12 m and 15 m wide"),
+            ("Location", "300 m from Samruddhi Mahamarg, near Samruddhi Circle"),
+            ("Connectivity", "Outer Ring Road, NH-44, NH-47 and NH-53"),
+            ("Nearby", "MIHAN, IT hub, D-Mart, NCI, AIIMS, IIM Nagpur"),
+            ("Track record", "1,350+ plots sold in Godrej's first and second projects near Samruddhi Mahamarg (as per developer)"),
+            ("Booking", "EOI now open, limited plots available"),
+        ],
+        "video_url": "",
+        "layout_file": "",
+        "brochure_file": "",
+    },
+ 
+    # ---------- Sai Pride 2 ----------
+    {
+        "slug": "sai-pride-2",
+        "name": "Sai Pride 2",
+        "developer": "",   # add the builder's name if you want it shown
+        "type": "2 BHK Semi Furnished Flat (Under Construction)",
+        "status": "sale",
+        "location": "New Sonegaon, Nagpur",
+        "summary": "A semi-furnished 2 BHK flat of 1,402 sq.ft on an independent floor in a 6-floor building, with 24-hour water supply. All bank loans are available.",
+        "beds": 2, "baths": 2,
+        "card_facts": [("Area", "1,402 sq.ft"), ("Building", "6 floors"), ("Furnishing", "Semi furnished"), ("Status", "Under construction")],
+        "highlights": ["All bank loans available", "Independent floor", "24 hr NMC + borewell water", "Semi furnished"],
+        "amenities": [
+            "Semi-furnished 2 BHK", "2 bathrooms", "Independent floor", "6-floor building",
+            "24-hour NMC water supply", "Borewell water facility",
+        ],
+        "image": "images/properties/sai-pride-2.jpg",   # add the photo with this file name
+        "price": "₹ 60,00,000",
+        "private_facts": [
+            ("Flat area", "1,402 sq.ft"),
+            ("Configuration", "2 BHK with 2 bathrooms"),
+            ("Building", "6 floors, independent floor"),
+            ("Furnishing", "Semi furnished"),
+            ("Construction status", "Under construction"),
+            ("Water supply", "24-hour NMC water and borewell water"),
+            ("Home loan", "All bank loans available"),
+            ("Contact for this flat", "+91 70586 32655"),
+        ],
+        "video_url": "",
+        "layout_file": "",
+        "brochure_file": "",
+    },
+
     # ------------------------------------------------------------------ FOR SALE
     # Copy this template when you have a live listing, then set "status": "sale".
     #
