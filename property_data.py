@@ -657,7 +657,7 @@ PROPERTIES = [
         ],
         "video_url": None,
         "layout_file": "kalpataru-launch-code-nagpur/layout.jpg",
-        "brochure_file": "kalpataru-launch-code-nagpur/brochure.pdf",
+        "brochure_file": "kalpataru-launch-code-nagpur.pdf",
         "map_url": "",
         "details": [
             ("RERA No.", "P50500077372"),
