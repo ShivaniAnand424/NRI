@@ -94,7 +94,15 @@ def inject_template_context():
             text("SELECT id, full_name, email FROM users WHERE id = :user_id"),
             {"user_id": user_id},
         ).mappings().first()
-    return {"csrf_token": csrf_token, "current_user": current_user, "site": SITE}
+    site_url = "https://www.nripmc.com"
+    return {
+        "csrf_token": csrf_token,
+        "current_user": current_user,
+        "site": SITE,
+        "site_url": site_url,
+        "canonical_url": f"{site_url}{request.path}",
+        "default_og_image": f"{site_url}{url_for('static', filename='images/nripmc-logo.jpg')}",
+    }
 
 
 def safe_next_url(target):
