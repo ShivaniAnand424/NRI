@@ -598,7 +598,7 @@ PROPERTIES = [
         ],
         "video_url": None,
         "layout_file": "nagpur-marina/layout.jpg",
-        "brochure_file": None,
+        "brochure_file": "brochures/nagpur-marina.pdf",
         "map_url": "",
         "details": [
             ("RERA No.", "PP1190002502095"),
