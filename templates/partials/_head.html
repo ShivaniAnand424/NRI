@@ -1,8 +1,55 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>{{ page_title|default('NRIPMC | Property Assistance in Nagpur') }}</title>
-<meta name="description" content="Explore property-related assistance in Nagpur for NRI owners, buyers, sellers, and customers.">
+{# ---- SEO: each page can set page_title, meta_description, robots, og_type and og_image ---- #}
+{% set seo_title = page_title|default('NRI Property Management in Nagpur | NRIPMC') %}
+{% set seo_description = (meta_description|default('NRIPMC looks after your Nagpur property while you live abroad: routine checkups, regular photo reports, repairs, fencing, legal paperwork and local support.'))|striptags|truncate(160, True, '…') %}
+
+<title>{{ seo_title }}</title>
+<meta name="description" content="{{ seo_description }}">
+<meta name="robots" content="{{ robots|default('index, follow') }}">
+{% if canonical_url %}<link rel="canonical" href="{{ canonical_url }}">{% endif %}
+<meta name="theme-color" content="#0b1d3a">
+<link rel="icon" href="{{ url_for('static', filename='images/favicon.png') }}" type="image/png">
+
+{# ---- Link previews (WhatsApp, Facebook, LinkedIn, X) ---- #}
+<meta property="og:site_name" content="NRI Property Management Company">
+<meta property="og:locale" content="en_IN">
+<meta property="og:type" content="{{ og_type|default('website') }}">
+<meta property="og:title" content="{{ seo_title }}">
+<meta property="og:description" content="{{ seo_description }}">
+{% if canonical_url %}<meta property="og:url" content="{{ canonical_url }}">{% endif %}
+<meta property="og:image" content="{{ og_image|default(default_og_image) }}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ seo_title }}">
+<meta name="twitter:description" content="{{ seo_description }}">
+<meta name="twitter:image" content="{{ og_image|default(default_og_image) }}">
+
+{# ---- Business details for Google (home page only) ---- #}
+{% if request.endpoint == 'index' %}
+<script type="application/ld+json">
+{{ {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "NRI Property Management Company",
+  "alternateName": "NRIPMC",
+  "url": site_url,
+  "logo": site_url ~ url_for('static', filename='images/nripmc-logo.jpg'),
+  "image": default_og_image,
+  "description": seo_description,
+  "telephone": site.phone_link,
+  "areaServed": {"@type": "City", "name": "Nagpur"},
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Nagpur",
+    "addressRegion": "Maharashtra",
+    "addressCountry": "IN"
+  }
+}|tojson }}
+</script>
+{% endif %}
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
