@@ -450,7 +450,7 @@ PROPERTIES = [
         ],
         "video_url": None,
         "layout_file": "highway-prime-mouza-panjari/layout.jpg",
-        "brochure_file": None,
+        "brochure_file": "brochures/highway-prime-mouza-panjari.pdf",
     },
     {
         "slug": "avinya-enclave",
@@ -802,7 +802,7 @@ PROPERTIES = [
         ],
         "video_url": "",
         "layout_file": "",
-        "brochure_file": "",
+        "brochure_file": "brochures/sai-pride-2.pdf",
     },
 
     # ------------------------------------------------------------------ FOR SALE
