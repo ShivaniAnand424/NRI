@@ -511,7 +511,7 @@ PROPERTIES = [
         ],
         "video_url": None,
         "layout_file": "avinya-enclave/layout.jpg",
-        "brochure_file": "avinya-enclave.pdf",
+        "brochure_file": "brochures/avinya-enclave.pdf",
         "map_url": "https://maps.app.goo.gl/QzDxmRKiCWgj7pFf9",
         "details": [
             ("Location", "Behind Narendra Nagar Post Office, Shri Hari Society, Narendra Nagar, Nagpur"),

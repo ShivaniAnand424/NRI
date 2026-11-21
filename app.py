@@ -165,6 +165,8 @@ def property_detail(slug):
     if session.get("user_id") is not None:
         if _private_property_file_exists(property_item.get("layout_file")):
             documents.append(("Floor / Layout Plan", "layout"))
+        if _private_property_file_exists(property_item.get("brochure_file")):
+            documents.append(("Brochure", "brochure"))
         for index, (label, relative_path) in enumerate(
             property_item.get("extra_files", [])
         ):
@@ -197,6 +199,8 @@ def property_file(slug, name):
 
     if name == "layout":
         relative_path = property_item.get("layout_file")
+    elif name == "brochure":
+        relative_path = property_item.get("brochure_file")
     elif name.startswith("extra-") and name[6:].isdigit():
         extra_files = property_item.get("extra_files", [])
         index = int(name[6:])
