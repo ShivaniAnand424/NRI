@@ -26,11 +26,14 @@ def _ca_path():
     for ca in candidates:
         if ca.is_file():
             return str(ca)
+    return None
 
-    raise FileNotFoundError(
-        "MySQL CA certificate not found. Set DB_SSL_CA to the certificate path; "
-        "on Render, add it as a Secret File and use /etc/secrets/ca.pem."
-    )
+
+def _ssl_config():
+    ca_path = _ca_path()
+    if ca_path:
+        return {"ca": ca_path, "check_hostname": False}
+    return {"check_hostname": False}
 
 
 def connect():
@@ -44,7 +47,7 @@ def connect():
         charset="utf8mb4",
         cursorclass=DictCursor,
         connect_timeout=10,
-        ssl={"ca": _ca_path(), "check_hostname": False},
+        ssl=_ssl_config(),
     )
 
 
@@ -141,7 +144,7 @@ def init_app(app):
     options = {"pool_pre_ping": True, "pool_recycle": 280}
 
     if url.get_backend_name() == "mysql":
-        options["connect_args"] = {"ssl": {"ca": _ca_path(), "check_hostname": False}}
+        options["connect_args"] = {"ssl": _ssl_config()}
         schema = MYSQL_SCHEMA
     else:
         schema = SQLITE_SCHEMA
